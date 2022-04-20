@@ -1,0 +1,112 @@
+body{
+
+    background-color:rgb(15, 139, 148);
+}
+.main{
+    background-color: rgb(163, 238, 203, 0.3);
+    margin:auto;
+    margin-top:50px;
+    width:50%;
+    border-radius: 5px;
+}
+.center{
+    margin: auto;
+    width:50%;
+    padding:10px;
+    text-align:center;
+}
+label{
+    text-align:left;
+    display:block;
+    border:  6px groove rgb(15, 139, 148) 5px;
+}
+.input_text{
+    width:100%;
+}
+
+#btn{
+    color:rgb(49, 43, 43);
+    font-family: "Lucida Console", "Courier New", monospace;
+    border:  10px groove rgb(15, 139, 148) 5px;
+    cursor: pointer; /*xa cambiar y poner la mano en el cursor*/
+}
+/*fin de index*/
+
+
+.main2{
+    font-family: "Lucida Console", "Courier New", monospace;
+    background-color: rgb(163, 238, 203, 0.3);
+    margin:auto;
+    margin-top:10px;
+    width:50%;
+    border: 1px solid rgb(15, 139, 148) 5px;
+    border-radius: 5px;
+}
+.main3{
+    font-family: "Lucida Console", "Courier New", monospace;
+    background-color: rgb(163, 238, 203, 0.3);
+    margin:auto;
+    border: 1px solid rgb(15, 139, 148) 5px;
+    margin-top:10px;
+    width:30%;
+    border-radius: 5px;
+
+}
+.left{
+    
+    text-align:left;
+    }
+
+#btn1{
+    color:black;
+    font-family: "Lucida Console", "Courier New", monospace;
+    border:  6px groove rgb(15, 139, 148) 5px;
+    margin: auto;
+    width:50%;
+    padding:10px;
+    text-align:center;
+    margin-top:10px;
+    background-color:#7FFF00;   
+    cursor: pointer;
+} 
+#btn2{  
+
+    color:black;
+    font-family: "Lucida Console", "Courier New", monospace;
+    border:  6px groove rgb(15, 139, 148) 5px;
+    margin: auto;
+    width:50%;
+    padding:10px;
+    text-align:center;  
+    margin-top:10px;
+    background-color:#D0312D; 
+    cursor: pointer;
+}
+
+.red{
+    background-color:#D0312D;
+
+}
+.green{
+    background-color:#7FFF00;
+}
+.orange{
+    background-color:orange;
+
+}
+.verde{
+    border: 2px solid rgb(15, 139, 200)
+}
+
+.linea{
+    display:inline;
+}
+.right{
+
+    text-align:right; 
+    font-style:italic;
+    margin-right:10px;
+}
+
+
+

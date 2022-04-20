@@ -1,0 +1,22 @@
+#clientes{
+    font-family: "Lucida Console", "Courier New", monospace;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#clientes td, #clientes td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#clientes tr:nth-child(even){background-color: #f2f2f2;}
+
+#clientes tr:hover {background-color: rgb(163, 238, 203);}
+
+#clientes  th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+ }

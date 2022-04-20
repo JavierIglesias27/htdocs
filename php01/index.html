@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<!--idoma es(español)- en(ingles-->
+	<head>
+		<meta charset="UTF-8" />
+		<title>PHP-0.1</title>
+		<meta name="Author" content="Javier Iglesias" />
+		<meta
+			name="Description"
+			content="CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB(IFCD0110-UF132)"
+		/>
+		<meta name="Viewport" content="width=device-with, initia-scale=1" />
+		<link rel="stylesheet" href="#" />
+		<style>
+			body {
+				background-color: grey;
+			}
+			fieldset {
+				width: 40%;
+				margin: auto;
+				margin-top: 100px;
+				border: 3px solid rgb(233, 200, 17);
+				text-align: center;
+			}
+			label {
+				display: block;
+			}
+			legend {
+				text-transform: uppercase;
+			}
+			label {
+				margin-top: 10px;
+			}
+
+			input[type="text"] {
+				width: 40%;
+				height: 20px;
+				margin-top: 15px;
+				text-align: center;
+				background-color: bisque;
+				border: 3px solid rgb(233, 200, 17);
+			}
+			input[type="submit"] {
+				margin-top: 20px;
+				border: 2px solid rgb(233, 200, 17);
+			}
+		</style>
+	</head>
+	<body>
+		<form method="GET" action=".\save.php" target="_blank">
+			<fieldset>
+				<legend>comparar</legend>
+				<div>
+					<label>Introducir numero 1:</label>
+					<input type="text" name="num1" />
+				</div>
+
+				<div>
+					<label>Introducir numero 2:</label>
+					<input type="text" name="num2" />
+				</div>
+
+				<div>
+					<input type="submit" value="enviar" />
+				</div>
+			</fieldset>
+		</form>
+	</body>
+</html>

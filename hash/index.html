@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>guardar o loguear</title>
+    <meta name="author" content="Erik Aguirre" />
+    <meta name="description" content="código curso IFCD0110" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="#" />
+    <link rel="stylesheet" href="/form2/style.css" />
+    <style>
+      p {
+        color: white;
+      }
+      input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      class="formcenter indexmain"
+      method="get"
+      action="save3.php"
+      target="_blank"
+    >
+      <fieldset class="index cajetincenter btcenter">
+        <legend>Titulo del form</legend>
+        <div>
+          <label>Name User:</label>
+          <input type="text" name="nameUser" id="nameUser" />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input type="text" name="email" id="email" />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <div>
+          <label for="html"> Save:</label>
+          <input
+            type="radio"
+            name="radio"
+            onclick="document.getElementById('nameUser').disabled=false; "
+          />
+          <label for="html">Login:</label>
+          <input
+            type="radio"
+            name="radio"
+            onclick="document.getElementById('nameUser').disabled=true;"
+          />
+        </div>
+        <div class="btcenter">
+          <input class="bt" type="submit" name="submit" />
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>

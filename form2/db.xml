@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list_users>
+	<user>
+	  <name>Tove</name>
+	  <email>Jani@gmail.cvom</email>
+	  <password>Reminder</password>
+	  <time>1647424840</time>
+	</user>
+	<user>
+	  <name>Tove2</name>
+	  <email>Jani2</email>
+	  <password>jeni@gmail.com</password>
+	  <time>1647424850</time>
+	</user>
+<user><name>hhhh</name><email>usuario@gmail.com</email><password>77777</password><radio>P</radio><pais>IT</pais><edad>1646780400</edad><terms>0</terms><cond>1</cond></user><user><name>hhhh</name><email>usuario@gmail.com</email><password>77777</password><radio>C</radio><pais>IT</pais><edad>1647385200</edad><terms>1</terms><cond>1</cond></user><user><name>hhhh</name><email>usuario@gmail.com</email><password>77777</password><radio>P</radio><pais>ES</pais><edad>1646175600</edad><terms>0</terms><cond>0</cond></user><user><name>hhhh</name><email>usuario@gmail.com</email><password>77777</password><radio>J</radio><pais>IT</pais><edad>1646866800</edad><terms>0</terms><cond>0</cond></user><user><name>hhhhhhhhhhhh</name><email>usuario@gmail.comusuario@gmail.comusuario@gmail.com</email><password>777777777777777</password><radio>C</radio><pais>IT</pais><edad>1646175600</edad><terms>1</terms><cond>0</cond></user><user><name>hhhh</name><email>usuario@gmail.com</email><password>77777</password><radio>C</radio><pais>IT</pais><edad>1646175600</edad><terms>0</terms><cond>0</cond></user><user><name>hhhh</name><email>usuario@gmail.com</email><password>77777</password><radio>P</radio><pais>IT</pais><edad>1646780400</edad><terms>0</terms><cond>0</cond></user><user><name>hhhhhhhhhhhhhhhh</name><email>usuario@gmail.comusuario@gmail.comusuario@gmail.comusuario@gmail.com</email><password>77777777777777777777</password><radio>C</radio><pais>FR</pais><edad>1646780400</edad><terms>0</terms><cond>0</cond></user><user><name>javi</name><email>javi@gmail.com</email><password>5555</password><radio>C</radio><pais>IT</pais><edad>1649196000</edad><terms>0</terms><cond>1</cond></user><user><name>javi</name><email>javi@gmail.com</email><password>6666</password><radio>C</radio><pais>IT</pais><edad>1649196000</edad><terms>1</terms><cond>0</cond></user></list_users>
