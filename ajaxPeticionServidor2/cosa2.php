@@ -7,10 +7,14 @@ switch ($_POST['queHacer']) {
         peticion2();
         break;
     case 3:
-        peticion4();
+        // borrar_crearDBTablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
+        insertarDatosTest();
         break;
     case 4:
         insertarDatos($_POST['email'], $_POST['nombre'], $_POST['phone']);
+        break;
+    case 5:
+        getDatos();
         break;
 }
 function peticion1()
@@ -31,7 +35,7 @@ function peticion3()
     echo "connection successfully";
     $conn->close();
 }
-function peticion4()
+function borrar_crearDBTablas()
 {
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error) {
@@ -63,10 +67,8 @@ function peticion4()
         echo "Error: create table \"usuarios\"<br/>" . $conn->error;
     }
     $conn->close();
-
-    normales();
 }
-function normales()
+function insertarDatosTest()
 {
     $conn = new mysqli("localhost", "root", "", "cesi");
     $sql = "INSERT INTO usuarios(email,nombre,phone) VALUES('eric.casanova@cesi.info','eric','665478932');";
@@ -92,6 +94,27 @@ function insertarDatos($email, $nombre, $phone)
         echo $last_id;
     } else {
         echo "Error: insert table \"usuarios\"<br/>" . $conn->error;
+    }
+    $conn->close();
+}
+//solicitar/obtener datos de las tabla
+function getDatos()
+{
+    $conn = new mysqli("localhost", "root", "", "cesi");
+    //comprobamos q la conxion es correcta
+
+    if ($conn->connect_error) {
+        die("connection failed" . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM usuarios";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<b>id:</b>" . $row["id"] . "<b>nombre:</b>" . $row["nombre"] . "<b>email:</b>" . $row["email"] . "<b>phone:</b>" . $row["phone"] . "<b>fecha:</b>" . $row["reg_date"] . "<br/>";
+        }
+    } else {
+        echo "0 results";
     }
     $conn->close();
 }
