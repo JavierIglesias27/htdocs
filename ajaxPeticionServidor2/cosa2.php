@@ -7,7 +7,7 @@ switch ($_POST['queHacer']) {
         peticion2();
         break;
     case 3:
-        // borrar_crearDBTablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
+        //borrar_crearDBTablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
         insertarDatosTest();
         break;
     case 4:
@@ -15,6 +15,10 @@ switch ($_POST['queHacer']) {
         break;
     case 5:
         getDatos();
+        break;
+
+    case 6:
+        getDatosPersona($_POST['email']);
         break;
 }
 function peticion1()
@@ -113,6 +117,29 @@ function getDatos()
         while ($row = $result->fetch_assoc()) {
             echo "<b>id:</b>" . $row["id"] . "<b>nombre:</b>" . $row["nombre"] . "<b>email:</b>" . $row["email"] . "<b>phone:</b>" . $row["phone"] . "<b>fecha:</b>" . $row["reg_date"] . "<br/>";
         }
+    } else {
+        echo "0 results";
+    }
+    $conn->close();
+}
+//seleccionar datos especificos
+function getDatosPersona($email)
+{
+    $conn = new mysqli("localhost", "root", "", "cesi");
+    //comprobamos q la conxion es correcta
+
+    if ($conn->connect_error) {
+        die("connection failed" . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM usuarios WHERE email='" . $email . "'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $array = [];
+        while ($row = $result->fetch_assoc()) {
+            array_push($array, $row);
+        }
+        echo json_encode($array);
     } else {
         echo "0 results";
     }

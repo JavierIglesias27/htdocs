@@ -22,6 +22,7 @@
 			<button onclick="enviarDatosFuncion()">Add to DB</button>
 		</div>
 		<div id="selectAll" style="background-color: violet"></div>
+		<div id="selectMail" style="background-color: orange"></div>
 		<script>
 			$.ajax({
 				url: "./cosa2.php",
@@ -123,6 +124,26 @@
 						document.getElementById("selectAll").innerHTML = "error Data";
 					} else {
 						document.getElementById("selectAll").innerHTML = response;
+					}
+				},
+				error: function (error) {
+					console.log("ERROR" + error);
+				},
+			});
+
+			$.ajax({
+				url: "./cosa2.php",
+				type: "POST",
+				data: {
+					queHacer: 6,
+					email: "eric.casanova@cesi.info",
+				},
+				//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
+				success: function (response) {
+					if (response == 0) {
+						document.getElementById("selectMail").innerHTML = "error Data";
+					} else {
+						document.getElementById("selectMail").innerHTML = response;
 					}
 				},
 				error: function (error) {
