@@ -7,7 +7,10 @@ switch ($_POST['queHacer']) {
         peticion2();
         break;
     case 3:
-        peticion3();
+        peticion4();
+        break;
+    case 4:
+        insertarDatos($_POST['email'], $_POST['nombre'], $_POST['phone']);
         break;
 }
 function peticion1()
@@ -26,4 +29,69 @@ function peticion3()
         die("connection failed" . $conn->connect_error);
     }
     echo "connection successfully";
+    $conn->close();
+}
+function peticion4()
+{
+    $conn = new mysqli("localhost", "root", "");
+    if ($conn->connect_error) {
+        die("connection failed" . $conn->connect_error);
+    }
+    // echo "connection successfully";
+    $sql = "DROP DATABASE IF EXISTS cesi";
+    if ($conn->query($sql) === TRUE) {
+        echo "drop database \"cesi\"";
+    } else {
+        echo "Error: drop database \"cesi\"" . $conn->error;
+    }
+    $sql = "CREATE DATABASE  cesi";
+    if ($conn->query($sql) === TRUE) {
+        echo "create database \"cesi\"";
+    } else {
+        echo "Error: create database \"cesi\"" . $conn->error;
+    }
+
+    $conn->close();
+
+
+    $conn = new mysqli("localhost", "root", "", "cesi");
+
+    $sql = "CREATE TABLE usuarios (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY , email VARCHAR(50) NOT NULL, nombre VARCHAR(30) NOT NULL, phone INT(9)NOT NULL, reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
+    if ($conn->multi_query($sql) === TRUE) {
+        echo "create table \"usuarios\"<br/>";
+    } else {
+        echo "Error: create table \"usuarios\"<br/>" . $conn->error;
+    }
+    $conn->close();
+
+    normales();
+}
+function normales()
+{
+    $conn = new mysqli("localhost", "root", "", "cesi");
+    $sql = "INSERT INTO usuarios(email,nombre,phone) VALUES('eric.casanova@cesi.info','eric','665478932');";
+    $sql .= "INSERT INTO usuarios(email,nombre,phone) VALUES('juan.anotnio@cesi.info','juan','879654123');";
+    $sql .= "INSERT INTO usuarios(email,nombre,phone) VALUES('juan.pedro@cesi.info','pedro','456789123');";
+    if ($conn->multi_query($sql) === TRUE) {
+        echo "insert  table \"usuarios\"<br/>";
+        $last_id = $conn->insert_id;
+        echo $last_id;
+    } else {
+        echo "Error: insert table \"usuarios\"<br/>" . $conn->error;
+    }
+    $conn->close();
+}
+function insertarDatos($email, $nombre, $phone)
+{
+    $conn = new mysqli("localhost", "root", "", "cesi");
+    $sql = "INSERT INTO usuarios(email,nombre,phone) VALUES('" . $email . "', '" . $nombre . "', '" . $phone . "' )";
+
+    if ($conn->multi_query($sql) === TRUE) {
+        echo "insert  table \"usuarios\"<br/>";
+        $last_id = $conn->insert_id;
+        echo $last_id;
+    } else {
+        echo "Error: insert table \"usuarios\"<br/>" . $conn->error;
+    }
+    $conn->close();
 }
