@@ -8,4 +8,4 @@ La carpeta se divide:
 
 ### Php
 
-### Hash
+### Tabla
