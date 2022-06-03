@@ -7,7 +7,7 @@ switch ($_POST['queHacer']) {
         peticion2();
         break;
     case 3:
-        //borrar_crearDBTablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
+        borrar_crearDBTablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
         insertarDatosTest();
         break;
     case 4:
