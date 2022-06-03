@@ -12,6 +12,11 @@
 				padding: 20px;
 			}
 		</style>
+		<!--crear input contraseña, pasarlo por md5 y lo guardamos como un nuevo campo en BBDD-->
+		<!--crear nuevo formulario con dos inputs y un boton
+		cooreo electronico y contraseña
+		al enviarlo a la tabla hay q convertirlo a md5 ycomprobar que son correctos
+		en caso afirmativo alert diciendo OK-->
 	</head>
 	<body>
 		<div id="crearTabla" style="background-color: red"></div>
@@ -19,6 +24,7 @@
 			<input type="text" id="name" placeholder="Nombre" />
 			<input type="text" id="email" placeholder="Email" />
 			<input type="text" id="phone" placeholder="Phone" />
+			<input type="text" id="password" placeholder="password" />
 			<button onclick="enviarDatosFuncion()">Add to DB</button>
 		</div>
 		<div id="selectAll" style="background-color: violet"></div>
