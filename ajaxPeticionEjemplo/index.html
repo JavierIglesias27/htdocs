@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<title>Document</title>
 		<!--crear formulario con  boton xa subir tabla
         1-poder conectarse
@@ -14,6 +15,126 @@
         5-introduciendole el mail de l persona te devuelva el resto de datos de esa persona
     
     -->
+		<style>
+			div {
+				margin: 20px;
+				padding: 20px;
+			}
+		</style>
 	</head>
-	<body></body>
+	<body>
+		<div id="crearTabla" style="background-color: red"></div>
+		<div id="insertarDatos">
+			<input type="text" id="name" placeholder="Nombre" />
+			<input type="text" id="email" placeholder="Email" />
+			<input type="text" id="phone" placeholder="Phone" />
+			<input type="text" id="password" placeholder="password" />
+			<button onclick="enviarDatosFuncion()">Add to DB</button>
+		</div>
+		<div id="selectAll" style="background-color: violet"></div>
+		<div id="selectMail" style="background-color: orange"></div>
+		<script>
+			$.ajax({
+				url: "./form.php",
+				type: "POST",
+				data: {
+					formulario: 1,
+				},
+				//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
+				success: function (response) {
+					if (response == 0) {
+						document.getElementById("crearTabla").innerHTML += "error Data";
+					} else {
+						document.getElementById("crearTabla").innerHTML += response;
+					}
+				},
+				error: function (error) {
+					console.log("ERROR" + error);
+				},
+			});
+			$.ajax({
+				url: "./form.php",
+				type: "POST",
+				data: {
+					formulario: 2,
+				},
+				//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
+				success: function (response) {
+					if (response == 0) {
+						document.getElementById("crearTabla").innerHTML += "error Data";
+					} else {
+						document.getElementById("crearTabla").innerHTML += response;
+					}
+				},
+				error: function (error) {
+					console.log("ERROR" + error);
+				},
+			});
+			function enviarDatosFuncion() {
+				$.ajax({
+					url: "./form.php",
+					type: "POST",
+					data: {
+						formulario: 3,
+						name: document.getElementById("name").value,
+						email: document.getElementById("email").value,
+						password: document.getElementById("password").value,
+						phone: document.getElementById("phone").value,
+					},
+					//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
+					success: function (response) {
+						if (response == 0) {
+							document.getElementById("crearTabla").innerHTML += "error";
+						} else {
+							document.getElementById("crearTabla").innerHTML += response;
+						}
+					},
+					error: function (error) {
+						console.log("ERROR" + error);
+					},
+				});
+			}
+			setTimeout(() => {
+				$.ajax({
+					url: "./form.php",
+					type: "POST",
+					data: {
+						formulario: 4,
+					},
+					//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
+					success: function (response) {
+						if (response == 0) {
+							document.getElementById("selectAll").innerHTML += "error Data";
+						} else {
+							document.getElementById("selectAll").innerHTML += response;
+						}
+					},
+					error: function (error) {
+						console.log("ERROR" + error);
+					},
+				});
+			}, 1000);
+			setTimeout(() => {
+				$.ajax({
+					url: "./form.php",
+					type: "POST",
+					data: {
+						formulario: 5,
+						email: "eric.casanova@cesi.info",
+					},
+					//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
+					success: function (response) {
+						if (response == 0) {
+							document.getElementById("selectMail").innerHTML += "error Data";
+						} else {
+							document.getElementById("selectMail").innerHTML += response;
+						}
+					},
+					error: function (error) {
+						console.log("ERROR" + error);
+					},
+				});
+			}, 1000);
+		</script>
+	</body>
 </html>
