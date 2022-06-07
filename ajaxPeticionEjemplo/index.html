@@ -6,33 +6,82 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 		<title>Document</title>
-		<!--crear formulario con  boton xa subir tabla
-        1-poder conectarse
-        2-crear la base en php en caso de que no exista
-        3-comprobar q en la tabla NO se puedan duplicurs usuario id= mail
-        4-agregar nuevo cliente en la tabla
-        -otro form
-        5-introduciendole el mail de l persona te devuelva el resto de datos de esa persona
-    
-    -->
+		<!--Uno: (Form)
+		4 inputs:
+			String: Nombre
+			String: Email
+			Int: Phone
+			String: Password
+			Boton: Debe guardar los datos en la base de datos siempre y cuando el email no exista ya en ésta 
+		Dos: (Form)
+			1 input:
+			Nombre:
+			Botón: Mostrará todos los datos en formato tabla de las personas que coincidan con el nombre introducido en el input anterior
+		Tres: (Form)
+			2 input:
+			Email
+			Password
+			Botón: Debe devolver un mensaje diciendo si el usuario introdujo una pareja válida o si alguno de los campos no es correcto (típico mensaje de "Usuario y o contraseña inválido")
+		Cuatro: Deben haber una o más cajas donde se pueda leer los registros de error y o éxito del código
+		Cinco: El campo contraseña debe estar cifrado en la DB
+			-->
 		<style>
 			div {
 				margin: 20px;
 				padding: 20px;
 			}
+			fieldset {
+				background-color: grey;
+				text-align: center;
+			}
+			legend {
+				text-transform: uppercase;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="crearTabla" style="background-color: red"></div>
-		<div id="insertarDatos">
+		<fieldset>
+			<legend>Introducir datos en tabla SQL</legend>
+			<div id="insertarDatos">
+				<label>Name</label>
+				<input type="text" id="name" placeholder="Nombre" />
+				<br />
+				<br />
+				<label>Email</label>
+				<input type="text" id="email" placeholder="Email" />
+				<br />
+				<br />
+				<label>Telefono</label>
+				<input type="text" id="phone" placeholder="Phone" />
+				<br />
+				<br />
+				<label>Contraseña</label>
+				<input type="text" id="password" placeholder="password" />
+				<br />
+				<br />
+				<button onclick="enviarDatosFuncion()">Add to DB</button>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Introducir nombre y dar datos</legend>
+			<label>Nombre</label>
 			<input type="text" id="name" placeholder="Nombre" />
+			<div id="selectAll" style="background-color: violet"></div>
+		</fieldset>
+		<fieldset>
+			<legend>Mail+Contraseña</legend>
+			<br />
+			<br />
+			<label>Email</label>
 			<input type="text" id="email" placeholder="Email" />
-			<input type="text" id="phone" placeholder="Phone" />
+			<br />
+			<br />
+			<label>Contraseña</label>
 			<input type="text" id="password" placeholder="password" />
-			<button onclick="enviarDatosFuncion()">Add to DB</button>
-		</div>
-		<div id="selectAll" style="background-color: violet"></div>
-		<div id="selectMail" style="background-color: orange"></div>
+			<div id="selectMail" style="background-color: orange"></div>
+		</fieldset>
+
 		<script>
 			$.ajax({
 				url: "./form.php",
