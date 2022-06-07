@@ -1,25 +1,36 @@
 <?php
 switch ($_POST['formulario']) {
     case 1:
-        conexionOk();
+        // conexionOk();
+        comprobarCosasDB();
         break;
-    case 2:
-        borrar_Tablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
-        crear_Tablas();
-        insertarDatosTest();
-        break;
+        // case 2:
+        //     borrar_Tablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
+        //     crear_Tablas();
+        //     insertarDatosTest();
+        //     break;
     case 3:
         insertarDatos($_POST['name'], $_POST['email'], $_POST['password'], $_POST['phone']);
         break;
     case 4:
         selectName($_POST['name']);
         break;
-
     case 5:
         signIn($_POST['email'], $_POST['password']);
         break;
 }
 //miramos que la conexion a la DataBase sea CORRECTA
+function comprobarCosasDB()
+{
+    if (conexionOk()) {
+        echo "OK CONECTION SUCCESFULLY";
+        if (!checkConnectionDB()) {
+            crear_Tablas();
+        }
+    } else {
+        echo "ERROR en conexion";
+    }
+}
 
 function conexionOk()
 {
@@ -29,6 +40,16 @@ function conexionOk()
         return false;
     }
     echo " TESTING 1: Connection Succesfully <br/>";
+    $conn->close();
+    return true;
+}
+function checkConnectionDB()
+{
+    $conn = new mysqli("localhost", "root", "", "pbd");
+    if ($conn->connect_error) {
+        return false;
+    }
+    echo "connected  Succesfully";
     $conn->close();
     return true;
 }
@@ -60,7 +81,7 @@ function crear_Tablas()
     echo " Connection successfully para crear la tabla<br/>";
 
 
-    $sql = "CREATE DATABASE  pbd ";
+    $sql = "CREATE DATABASE pbd ";
 
     if ($conn->query($sql) === TRUE) {
         echo "TESTING 3:create database \"pbd\"<br/>";
