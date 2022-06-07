@@ -66,20 +66,24 @@
 		<fieldset>
 			<legend>Introducir nombre y dar datos</legend>
 			<label>Nombre</label>
-			<input type="text" id="name" placeholder="Nombre" />
-			<div id="selectAll" style="background-color: violet"></div>
+			<input type="text" id="name1" placeholder="Nombre" />
+			<button onclick="selectName()">Sign</button>
+			<div id="selectName" style="background-color: violet"></div>
 		</fieldset>
 		<fieldset>
 			<legend>Mail+Contraseña</legend>
 			<br />
 			<br />
 			<label>Email</label>
-			<input type="text" id="email" placeholder="Email" />
+			<input type="text" id="emailSignIn" placeholder="Email" />
 			<br />
 			<br />
 			<label>Contraseña</label>
-			<input type="text" id="password" placeholder="password" />
-			<div id="selectMail" style="background-color: orange"></div>
+			<br />
+			<br />
+			<input type="text" id="passwordSignIn" placeholder="password" />
+			<button onclick="signIn()">Sign</button>
+			<div id="InsertarDatosLog" style="background-color: orange"></div>
 		</fieldset>
 
 		<script>
@@ -119,16 +123,40 @@
 					console.log("ERROR" + error);
 				},
 			});
+
 			function enviarDatosFuncion() {
+				let name = document.getElementById("name").value;
+				let email = document.getElementById("email").value;
+				let password = document.getElementById("password").value;
+				let phone = document.getElementById("phone").value;
+
+				if (name == "" || !isNaN(name)) {
+					alert("el campo nombre no puede estar vacio");
+					return null;
+				}
+				if (email == "" || !isNaN(email)) {
+					alert("elcampo email  no puede estar vacio");
+					return null;
+				}
+				/*falta poner regex pasword,phone*/
+				if (password == "" || !isNaN(password)) {
+					alert(" el campo password  no puede estar vacio");
+					return null;
+				}
+				if (isNaN(phone)) {
+					alert(" el campo phone  no puede estar vacio");
+					return null;
+				}
+
 				$.ajax({
 					url: "./form.php",
 					type: "POST",
 					data: {
 						formulario: 3,
-						name: document.getElementById("name").value,
-						email: document.getElementById("email").value,
-						password: document.getElementById("password").value,
-						phone: document.getElementById("phone").value,
+						name: name,
+						email: email,
+						password: password,
+						phone: phone,
 					},
 					//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
 					success: function (response) {
@@ -143,47 +171,65 @@
 					},
 				});
 			}
-			setTimeout(() => {
+
+			function selectName() {
+				let name = document.getElementById("name1").value;
+
 				$.ajax({
 					url: "./form.php",
 					type: "POST",
 					data: {
 						formulario: 4,
+						name: name,
 					},
 					//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
 					success: function (response) {
 						if (response == 0) {
-							document.getElementById("selectAll").innerHTML += "error Data";
+							document.getElementById("selectName").innerHTML += "error";
 						} else {
-							document.getElementById("selectAll").innerHTML += response;
+							document.getElementById("selectName").innerHTML += response;
 						}
 					},
 					error: function (error) {
-						console.log("ERROR" + error);
+						console.log(error);
 					},
 				});
-			}, 1000);
-			setTimeout(() => {
+			}
+
+			function signIn() {
+				let email = document.getElementById("emailSignIn").value;
+				let password = document.getElementById("passwordSignIn").value;
+				if (email == "" || !isNaN(email)) {
+					alert("el campo email  no puede estar vacio");
+					return null;
+				}
+				/*falta poner regex pasword,phone*/
+				if (password == "" || !isNaN(password)) {
+					alert(" el campo password  no puede estar vacio");
+					return null;
+				}
 				$.ajax({
 					url: "./form.php",
 					type: "POST",
 					data: {
 						formulario: 5,
-						email: "eric.casanova@cesi.info",
+						email: email,
+
+						password: password,
 					},
 					//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
 					success: function (response) {
 						if (response == 0) {
-							document.getElementById("selectMail").innerHTML += "error Data";
+							document.getElementById("InsertarDatosLog").innerHTML += "error";
 						} else {
-							document.getElementById("selectMail").innerHTML += response;
+							document.getElementById("InsertarDatosLog").innerHTML += response;
 						}
 					},
 					error: function (error) {
-						console.log("ERROR" + error);
+						console.log(error);
 					},
 				});
-			}, 1000);
+			}
 		</script>
 	</body>
 </html>

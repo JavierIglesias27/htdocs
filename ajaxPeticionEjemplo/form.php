@@ -4,47 +4,68 @@ switch ($_POST['formulario']) {
         conexionOk();
         break;
     case 2:
-        borrar_crearDBTablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
+        borrar_Tablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
+        crear_Tablas();
         insertarDatosTest();
         break;
     case 3:
         insertarDatos($_POST['name'], $_POST['email'], $_POST['password'], $_POST['phone']);
         break;
     case 4:
-        getDatos();
+        selectName($_POST['name']);
         break;
+
     case 5:
-        getDatosPersona($_POST['email']);
+        signIn($_POST['email'], $_POST['password']);
         break;
 }
 //miramos que la conexion a la DataBase sea CORRECTA
+
 function conexionOk()
 {
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error) {
-        die("connection failed" . $conn->connect_error);
+        die("connection failed" . $conn->connect_error . "<br/>");
+        return false;
     }
-    echo " CONNECTION SUCCESSFULLY";
+    echo " TESTING 1: Connection Succesfully <br/>";
     $conn->close();
+    return true;
 }
-function borrar_crearDBTablas()
+
+/*ME SIRVE XA HACER TESTING Y VER Q LOS DATOS SE INTRODUCEN CORRECTAMENTE */
+function borrar_Tablas()
 {
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error) {
-        die("connection failed" . $conn->connect_error);
+        die("TESTING 1:connection failed" . $conn->connect_error . "<br/>");
     }
-    // echo "connection successfully";
+    // echo "  llyTESTING 2: borrarCrearTabla--> connection successfu <br/>";
+
     $sql = "DROP DATABASE IF EXISTS pbd";
     if ($conn->query($sql) === TRUE) {
-        echo "drop database \"pbd\"";
+        echo " TESTING 2:drop database \"pbd\" <br/>";
     } else {
-        echo "Error: drop database \"pbd\"" . $conn->error;
+        echo "Error TESTING2: drop database \"pbd\"" . $conn->error . "<br/>";
     }
-    $sql = "CREATE DATABASE  pbd";
+
+    $conn->close();
+}
+function crear_Tablas()
+{
+    $conn = new mysqli("localhost", "root", "");
+    if ($conn->connect_error) {
+        die("connection failed" . $conn->connect_error . "<br/>");
+    }
+    echo " Connection successfully para crear la tabla<br/>";
+
+
+    $sql = "CREATE DATABASE  pbd ";
+
     if ($conn->query($sql) === TRUE) {
-        echo "create database \"pbd\"";
+        echo "TESTING 3:create database \"pbd\"<br/>";
     } else {
-        echo "Error: create database \"pbd\"" . $conn->error;
+        echo "Error TESTING 3: create database \"pbd\"" . $conn->error;
     }
 
     $conn->close();
@@ -52,11 +73,12 @@ function borrar_crearDBTablas()
 
     $conn = new mysqli("localhost", "root", "", "pbd");
 
-    $sql = "CREATE TABLE formulario (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY , nombre VARCHAR(30),email VARCHAR(50) NOT NULL, password VARCHAR(30) NOT NULL, phone INT(9)NOT NULL, reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
+
+    $sql = "CREATE TABLE formulario (id INT(10) UNSIGNED AUTO_INCREMENT UNIQUE PRIMARY KEY , nombre VARCHAR(30),email VARCHAR(50) NOT NULL, password CHAR(32)  CHARACTER SET 'latin1' NOT NULL, phone INT(9)NOT NULL, reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)";
     if ($conn->multi_query($sql) === TRUE) {
-        echo "create table \"formulario\"<br/>";
+        echo " TESTING 4: create table \"formulario\"<br/>";
     } else {
-        echo "Error: create table \"formulario\"<br/>" . $conn->error;
+        echo "Error TESTING 4: create table \"formulario\"<br/>" . $conn->error;
     }
     $conn->close();
 }
@@ -67,18 +89,19 @@ function insertarDatosTest()
     $sql .= "INSERT INTO formulario(nombre,email,password,phone) VALUES('andres','juan.anotnio@cesi.info','jasbb6uan','879654123');";
     $sql .= "INSERT INTO formulario(nombre, email,password,phone) VALUES('pedro','juan.pedro@cesi.info','asf78jasd8','5678912');";
     if ($conn->multi_query($sql) === TRUE) {
-        echo "insert  table \"formulario\"<br/>";
+        echo " TESTING 5: insert  table \"formulario\"<br/>";
         $last_id = $conn->insert_id;
-        echo $last_id;
+        echo  "Id asociado: " . $last_id;
     } else {
-        echo "Error: insert table \"formulario\"<br/>" . $conn->error;
+        echo "Error TESTING 5: insert table \"formulario\"<br/>" . $conn->error;
     }
     $conn->close();
 }
 function insertarDatos($nombre, $email, $password, $phone)
 {
     $conn = new mysqli("localhost", "root", "", "pbd");
-    $sql = "INSERT INTO formulario(nombre, email,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . $password . "','" . $phone . "' )";
+    /*md5 password me lo codifica */
+    $sql = "INSERT INTO formulario(nombre, email,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . md5($password) . "','" . $phone . "' )";
 
     if ($conn->multi_query($sql) === TRUE) {
         echo "insert  table \"pbd\"<br/>";
@@ -120,7 +143,7 @@ function getDatosPersona($email)
         die("connection failed" . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM formulario WHERE email='" . $email . "'";
+    $sql = "SELECT nombre FROM formulario WHERE email='" . $email . "'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $array = [];
@@ -130,6 +153,42 @@ function getDatosPersona($email)
         echo json_encode($array);
     } else {
         echo "0 results";
+    }
+    $conn->close();
+}
+function signIn($email, $password)
+{
+
+    $conn = new mysqli("localhost", "root", "", "pbd");
+
+    $sql = "SELECT nombre FROM formulario WHERE email= '" . $email . "' && password= '" . md5($password) . "' ;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+
+        while ($row = $result->fetch_assoc()) {
+
+            echo "Contraseña introducida correctamente" . $row['nombre'];
+        }
+    } else {
+        echo $conn->error . "<br/>" . $sql . "<br/>";
+    }
+    $conn->close();
+}
+function selectName($name)
+
+{
+    $conn = new mysqli("localhost", "root", "", "pbd");
+
+    $sql = "SELECT * FROM formulario WHERE nombre = '" . $name . "';";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+
+        while ($row = $result->fetch_assoc()) {
+
+            echo "Bienvenido:  " . $row['nombre'];
+        }
+    } else {
+        echo $conn->error . "<br/>" . $sql . "<br/>";
     }
     $conn->close();
 }
