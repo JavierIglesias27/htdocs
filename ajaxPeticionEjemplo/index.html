@@ -37,6 +37,14 @@
 			legend {
 				text-transform: uppercase;
 			}
+			.rojo {
+				background-color: red;
+				border: 2px solid red;
+			}
+			.verde {
+				background-color: green;
+				border: 2px solid green;
+			}
 		</style>
 	</head>
 	<body>
@@ -125,29 +133,71 @@
 			});
 
 			function enviarDatosFuncion() {
-				let name = document.getElementById("name").value;
-				let email = document.getElementById("email").value;
-				let password = document.getElementById("password").value;
-				let phone = document.getElementById("phone").value;
+				let name = document.getElementById("name");
+				let email = document.getElementById("email");
+				let password = document.getElementById("password");
+				let phone = document.getElementById("phone");
 
-				if (name == "" || !isNaN(name)) {
-					alert("el campo nombre no puede estar vacio");
+				if (name.value == "" || !isNaN(name.value)) {
+					console.log("el campo nombre no puede estar vacio");
+					name.classList.add("rojo");
 					return null;
 				}
-				if (email == "" || !isNaN(email)) {
-					alert("elcampo email  no puede estar vacio");
+				let $totalPalabras1 = name.value.trim(/ +/g, "").replace().split(" ");
+
+				if (
+					($totalPalabras1.length == 1 && $totalPalabras1[0].length >= 2) ||
+					($totalPalabras1.length == 2 && $totalPalabras1[1].length >= 2)
+				) {
+					name.classList.add("verde");
+				} else {
+					console.log("minino 2 letras en el campo nombre");
+					name.classList.add("rojo");
+				}
+				if (email.value == "" || !isNaN(email.value)) {
+					console.log("el campo email  no puede estar vacio");
+					email.classList.add("rojo");
 					return null;
 				}
-				/*falta poner regex pasword,phone*/
-				if (password == "" || !isNaN(password)) {
-					alert(" el campo password  no puede estar vacio");
+				if (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(email.value)) {
+					email.classList.add("verde");
+					console.log("correcto mail regex");
+				} else {
+					console.log("error campo mail");
+					email.classList.add("rojo");
+				}
+				/**
+				 
+				 * debe contener: Al menos una letra, al menos un numero, al menos una letra mayúscula, al menos 4 caracteres, SI permite espacios.
+				 * caso contrario error
+				 **/
+				if (password.value == "" || !isNaN(password.value)) {
+					console.log(" el campo password  no puede estar vacio");
+					password.classList.add("rojo");
 					return null;
 				}
-				if (isNaN(phone)) {
-					alert(" el campo phone  no puede estar vacio");
+				if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/.test(password.value)) {
+					password.classList.add("verde");
+					console.log("correcto password regex");
+				} else {
+					console.log("error campo password");
+					password.classList.add("rojo");
+				}
+
+				if (isNaN(phone.value)) {
+					console.log(" el campo phone  no puede estar vacio");
 					return null;
 				}
+				if (/^(\+\d{1,3}[- ]?)?\d{10}$/.test(phone.value)) {
+					phone.classList.add("verde");
+					console.log("correcto phone regex");
+				} else {
+					console.log("error campo phone");
+					phone.classList.add("rojo");
+				}
+
 				/*mirar si el mail  es unico*/
+				return null;
 				$.ajax({
 					url: "./form.php",
 					type: "POST",

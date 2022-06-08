@@ -2,13 +2,10 @@
 switch ($_POST['formulario']) {
     case 1:
         // conexionOk();
+        // borrar_Tablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
         comprobarCosasDB();
+
         break;
-        // case 2:
-        //     borrar_Tablas(); // comentarlo xa guardar los datos y asi insertamos datos xq sino cada vez que actualizemos se borran los datos
-        //     crear_Tablas();
-        //     insertarDatosTest();
-        //     break;
     case 3:
         insertarDatos($_POST['name'], $_POST['email'], $_POST['password'], $_POST['phone']);
         break;
@@ -45,13 +42,19 @@ function conexionOk()
 }
 function checkConnectionDB()
 {
-    $conn = new mysqli("localhost", "root", "", "pbd");
-    if ($conn->connect_error) {
-        return false;
+    try {
+        $conn = new mysqli("localhost", "root", "", "pbd");
+
+        if ($conn->connect_error) {
+            return false;
+        }
+        echo "connected  Succesfully";
+        $conn->close();
+        return true;
+    } catch (Exception) {
+        //throw $th;
     }
-    echo "connected  Succesfully";
-    $conn->close();
-    return true;
+    return false;
 }
 
 /*ME SIRVE XA HACER TESTING Y VER Q LOS DATOS SE INTRODUCEN CORRECTAMENTE */
