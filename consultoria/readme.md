@@ -33,6 +33,24 @@
 
 ## Realizar un diagrama de Gantt
 
+(https://www.tablesgenerator.com/markdown_tables)
+
+|                      | 15/06/2022 | 16/06/2022 | 17/06/022 | 18/06/2020 | 19/06/2022 | 20/06/2022 | 21/06/2022 | 22/06/2022 | 23/06/2022 | 24/06/2022 | 25/06/2022 | 26/06/2022 | 27/06/2020 |
+| -------------------- | :--------: | ---------- | --------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| Brainstrom           |    _ok_    | x          |           |            |            |            |            |            |            |            |            |            | FIN        |
+| Nombre Proyecto      |    _ok_    | x          |           |            |            |            |            |            |            |            |            |            | FIN        |
+| Descrip. Proyecto    |    _ok_    | x          |           |            |            |            |            |            |            |            |            |            | FIN        |
+| Usuarios potenciales |    _ok_    | x          |           |            |            |            |            |            |            |            |            |            | FIN        |
+| Wireframe            |            |            |           |            |            |            |            |            |            |            |            |            |            |
+| Boostrap             |     x      |            |           |            |            |            |            |            |            |            |            |            | FIN        |
+| Html                 |     x      |            |           |            |            |            |            |            |            |            |            |            | FIN        |
+| CSS3                 |     x      |            |           |            |            |            |            |            |            |            |            |            | FIN        |
+| JavaScript           |     x      |            |           |            |            |            |            |            |            |            |            |            | FIN        |
+| Php                  |     x      |            |           |            |            |            |            |            |            |            |            |            | FIN        |
+| MySQL- MariaDB       |     x      |            |           |            |            |            |            |            |            |            |            |            | FIN        |
+| GTMETRIX             |     x      |            |           |            |            |            |            |            |            |            |            |            | FIN        |
+| Prueba Usabilidad    |     x      |            |           |            |            |            |            |            |            |            |            |            |            |
+
 ## Wireframes (Realización de los esbozos)
 
 ## Crear una plantilla grafica con código o con imágenes de un prototipo del resultado final
