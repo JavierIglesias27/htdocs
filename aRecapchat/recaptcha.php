@@ -32,7 +32,7 @@ if (!$captcha) {
 }
 if ($response->success == true && $response->score > 0.5) {
     echo "OK<br>";
-    /*copiar el ajax primero importdo */
+    /*copiar el ajax primero importado */
 } else if ($response->success == true && $response->score <= 0.5) {
     //Do something to denied access
     echo "Human?<br>";
