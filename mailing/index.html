@@ -10,8 +10,30 @@
 		1. INSTALARLO EN XAMP aceptar y terminar
 		2.dentro VS terminal-nueva terminal 
 		3.mirar que ponga C:\xampp\htdocs>
-        4.ejecutar C:\xampp\htdocs> composer
-        
+		4.reiniciar VS
+        5.ejecutar C:\xampp\htdocs> composer y se instala ok!
+		6. vas a la pagina https://getbootstrap.com/docs/4.0/getting-started/download/ y baja a composer
+		y copias el codigo = composer require twbs/bootstrap:5.0.2
+		7. crea automaticamente las carpetas:
+		-vendor: twbs/boostrap--aqui esta la carperta bootstrap
+		-composer.json: este nos interesa xq aqui actualizalo cambiamos el numero de version 5.0.2 y
+		en terminal:
+			 composer update
+			 composer validate
+
+		-composer.lock
+		8. sino quieres importar a guthub todoslo repositoios creas el archivo
+		.gitignore -> creamos archivo contrasenas.json y dentro de gitignore ponemos contrasenas.json
+		y ese archivo no lo sube. 
+		9. en composer.json y añadimos  "phpmailer/phpmailer": "^6.5"
+		10. vas terminal:   composer install
+							composer update
+		11. ahora en la carpeta vendor aparece  phpmailer(es una libreria xa correos)
+		12. en casa instalar composer
+		en la terminal composer update y composer install
+
+
+
     
     -->
 	</head>
