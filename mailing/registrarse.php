@@ -14,20 +14,15 @@ switch ($_POST['api']) {
     case "checkEmail":
         $email = sanitize($_POST['email']);
         checkEmail($email, $myObject);
-
-        //
-        echo json_encode($myObject);
-        exit;
-
-        if (property_exists('success', json_encode($myObject))) {
+        if (isset($myObject->success)) {
             insertUser($email, sanitize($_POST['nombre']), sanitize($_POST['phone']), sanitize($_POST['password']), sanitize($_POST['captcha']), $myObject);
         }
-        echo json_encode($myObject);
         break;
     default:
-        echo "error";
+        $myObject->error = "error en el switchcase";
         break;
 }
+echo json_encode($myObject);
 function checkEmail($email, $myObject)
 {
     /*trim quito espacios delante
@@ -49,7 +44,7 @@ function checkEmail($email, $myObject)
     if ($result->num_rows == 1) {
 
         while ($row = $result->fetch_assoc()) {
-            $myObject->error = $row['email'];
+            $myObject->error = "YA EXISTE: vacio" . $row['email'];
         }
     } else {
         $myObject->success = "PHP: lado servidor : mail is OK";
@@ -73,25 +68,27 @@ function insertUser($email, $nombre, $phone, $password, $captcha, $myObject)
         //Do something with error
     } else {
         if ($response->success == true && $response->score > 0.5) {
-            guardarDB($email, $nombre, $phone, $password, $myObject);
+            guardarDB($nombre, $email,  $phone, $password, $myObject);
         } else if ($response->success == true && $response->score <= 0.5) {
             //Do something to denied access
-            echo "Human?<br>";
+            $myObject->error = "Human?<br>";
         } else {
-            echo "NO<br>";
+            $myObject->error = "NO<br>";
         }
     }
 }
 function guardarDB($email, $nombre, $phone, $password, $myObject)
 {
     $conn = new mysqli("localhost", "root", "", "pbd");
-    $sql = "INSERT INTO usuarios(nombre,email,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . md5($password) . "','" . $phone . "' )";
+    $sql = "INSERT INTO usuarios(email,nombre,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . md5($password) . "','" . $phone . "' )";
     if ($conn->multi_query($sql) === TRUE) {
-        echo "  insert  table \"pbd\"<br/>";
+        // echo "  insert  table \"pbd\"<br/>";
         $last_id = $conn->insert_id;
-        echo  "Id asociado: " . $last_id;
+        // echo  "Id asociado: " . $last_id;
+        $myObject->success = "Usuario guardado DB";
     } else {
-        echo "Error T insert table \"pbd\"<br/>" . $conn->error;
+        // echo "Error al  insert table \"pbd\"<br/>" . $conn->error;
+        $myObject->success = " ERROR Usuario NO guardado DB";
     }
     $conn->close();
 }

@@ -76,7 +76,7 @@ function registrarUsuario() {
 		data: {
 			api: "checkEmail",
 			email: inputEmail_valor,
-			name: inputName_valor,
+			nombre: inputName_valor,
 			phone: inputPhone_valor,
 			password: inputPassword_valor,
 			captcha: document.getElementById("g-recaptcha-response").value,
@@ -84,7 +84,7 @@ function registrarUsuario() {
 		dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
 		success: function (response) {
 			if (response == 0) {
-				console.error(response);
+				console.warn(response);
 			} else {
 				console.log(response);
 				if ("error" in response) {
