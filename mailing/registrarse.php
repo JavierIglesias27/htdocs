@@ -138,7 +138,7 @@ function sendMail($usuario, $sha1)
     //
     $SentToEmail = $usuario->email;/* este es el usuario q yo genere podria poner javi@hotmail.com */
     $Asunto = "ninguno";
-    $BodyHTML = "<h1>hola</h1><br /><a href=\"http://localhost/?claves=" . $sha1 . "\"<b></a>";
+    $BodyHTML = "<h1>hola</h1><br /><a href=\"http://localhost/?clave=" . $sha1 . "\"><b>" . $sha1 . "</b></a>";
     $BodyNOHTML = "hola que tal?";
 
 
