@@ -49,6 +49,7 @@ function registrarUsuario() {
 	if (inputName_valor == "" && !isNaN(inputName_valor)) {
 		nameBoolean = false;
 	}
+	/* hacer regex xa todos en JS y luego poner el mismo eh PHP */
 	if (inputName_valor.length < 2) {
 		nameBoolean = false;
 	}
@@ -61,31 +62,55 @@ function registrarUsuario() {
 	if (inputPhone_valor == "" && isNaN(inputPhone_valor)) {
 		phoneBoolean = false;
 	}
+
+	// if (
+	// 	nameBoolean &&
+	// 	emailBoolean &&
+	// 	passwordBoolean &&
+	// 	phoneBoolean &&
+	// 	checkRecaptcha()
+	// ) {
 	$.ajax({
 		url: "./registrarse.php",
 		type: "POST",
 		data: {
 			api: "checkEmail",
 			email: inputEmail_valor,
+			name: inputName_valor,
+			phone: inputPhone_valor,
+			password: inputPassword_valor,
+			captcha: document.getElementById("g-recaptcha-response").value,
 		},
-		//dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
+		dataType: "json", //esta quitado xq hola NO ES UN JSON es texto plano
 		success: function (response) {
 			if (response == 0) {
 				console.error(response);
 			} else {
 				console.log(response);
-				if (response == "null") {
-					console.error("ERROR");
+				if ("error" in response) {
+					console.warn("ERROR");
+					emailBoolean = false;
 				} else {
-					console.error("TODO OK");
+					console.warn("TODO OK");
+					emailBoolean = true;
 				}
+				coloresCampo(nameBoolean, emailBoolean, passwordBoolean, phoneBoolean);
 			}
 		},
 		error: function (error) {
 			console.log("ERROR" + error);
+			emailBoolean = false;
+			coloresCampo(nameBoolean, emailBoolean, passwordBoolean, phoneBoolean);
 		},
 	});
+}
 
+function coloresCampo(
+	nameBoolean,
+	emailBoolean,
+	passwordBoolean,
+	phoneBoolean
+) {
 	if (nameBoolean) {
 		inputName.classList.remove("inputError");
 		inputName.classList.add("inputSucces");
@@ -115,15 +140,5 @@ function registrarUsuario() {
 	} else {
 		inputPhone.classList.remove("inputSucces");
 		inputPhone.classList.add("inputError");
-	}
-	//to do
-	if (
-		nameBoolean &&
-		emailBoolean &&
-		passwordBoolean &&
-		phoneBoolean &&
-		checkRecaptcha()
-	) {
-		/*guardar en DB */
 	}
 }
