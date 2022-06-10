@@ -13,7 +13,11 @@ function sanitize($texto)
 switch ($_POST['api']) {
     case "checkEmail":
         $email = sanitize($_POST['email']);
-        checkEmail($myObject, $email);
+        checkEmail($email, $myObject);
+
+        //
+        echo json_encode($myObject);
+        exit;
 
         if (property_exists('success', json_encode($myObject))) {
             insertUser($email, sanitize($_POST['nombre']), sanitize($_POST['phone']), sanitize($_POST['password']), sanitize($_POST['captcha']), $myObject);
