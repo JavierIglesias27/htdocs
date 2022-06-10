@@ -86,14 +86,12 @@ function guardarDB($email, $nombre, $phone, $password, $myObject)
 {
     $conn = new mysqli("localhost", "root", "", "pbd");
     $sql = "INSERT INTO usuarios(nombre,email,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . md5($password) . "','" . $phone . "' )";
-    $sql .= "INSERT INTO usuarios(nombre,email,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . md5($password) . "','" . $phone . "' )";
-    $sql .= "INSERT INTO usuarios(nombre, email,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . md5($password) . "','" . $phone . "' )";
     if ($conn->multi_query($sql) === TRUE) {
-        echo "  insert  table \"usuarios\"<br/>";
+        echo "  insert  table \"pbd\"<br/>";
         $last_id = $conn->insert_id;
         echo  "Id asociado: " . $last_id;
     } else {
-        echo "Error T insert table \"usuarios\"<br/>" . $conn->error;
+        echo "Error T insert table \"pbd\"<br/>" . $conn->error;
     }
     $conn->close();
 }
