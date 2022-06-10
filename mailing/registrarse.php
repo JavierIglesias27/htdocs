@@ -68,7 +68,7 @@ function insertUser($email, $nombre, $phone, $password, $captcha, $myObject)
         //Do something with error
     } else {
         if ($response->success == true && $response->score > 0.5) {
-            guardarDB($nombre, $email,  $phone, $password, $myObject);
+            guardarDB($email, $nombre,  $phone, $password, $myObject);
         } else if ($response->success == true && $response->score <= 0.5) {
             //Do something to denied access
             $myObject->error = "Human?<br>";
@@ -80,15 +80,110 @@ function insertUser($email, $nombre, $phone, $password, $captcha, $myObject)
 function guardarDB($email, $nombre, $phone, $password, $myObject)
 {
     $conn = new mysqli("localhost", "root", "", "pbd");
-    $sql = "INSERT INTO usuarios(email,nombre,password,phone) VALUES('" . $nombre . "', '" . $email . "', '" . md5($password) . "','" . $phone . "' )";
+    $sql = "INSERT INTO usuarios_temp(email,nombre,password,phone) VALUES('" . $email . "', '" . $nombre . "', '" . md5($password) . "','" . $phone . "' )";
     if ($conn->multi_query($sql) === TRUE) {
         // echo "  insert  table \"pbd\"<br/>";
         $last_id = $conn->insert_id;
         // echo  "Id asociado: " . $last_id;
-        $myObject->success = "Usuario guardado DB";
+        enviarmail($email);
     } else {
         // echo "Error al  insert table \"pbd\"<br/>" . $conn->error;
         $myObject->success = " ERROR Usuario NO guardado DB";
     }
     $conn->close();
+}
+function enviarmail($email)
+{
+    $usuario = new stdClass();
+    $conn = new mysqli("localhost", "root", "", "pbd");
+    $sql = "SELECT * FROM usuarios_temp WHERE email = '" . $email . "' ;";
+    $result = $conn->query($sql);
+    if ($result->num_rows == 1) {
+
+        while ($row = $result->fetch_assoc()) {
+            $usuario->email = $row['email'];
+            $usuario->nombre = $row['nombre'];
+            $usuario->phone = $row['phone'];
+            $usuario->password = $row['password'];
+            $usuario->reg_date = $row['reg_date'];
+        }
+        $xstring = $usuario->email . "-" . $usuario->nombre . "-" . $usuario->phone . "-" . $usuario->password . "-" . $usuario->reg_date;
+        $sha1 = sha1($xstring);
+        // echo $sha1;
+        sendMail($usuario, $sha1);
+    } else {
+
+        // echo "ERROR:<br>";
+        // print_r($result);
+        // echo "<br>" . $sql . "<br>";
+    }
+    $conn->close();
+}
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+function sendMail($usuario, $sha1)
+{
+    //MAIL
+    $HostSMTP = 'smtp.gmail.com'; // Set the SMTP server to send through
+    $ContrasenaDelCorreo = 'xdsosiindatzwtij'; // SMTP password
+    $SendFromEMAIL = 'jiglesro7@gmail.com'; // escribir mi correo electronico
+    $QuienLoEnviaNAME = 'moderator';
+    $SendFromEMAILreply = 'jiglesro7@gmail.com';
+    $QuienResponderNAME = 'moderator';
+    $PortSMTP = 465; // TCP port to connect to
+    //$PortSMTP = 587; // TCP port to connect to
+    //
+    $SentToEmail = $usuario->email;/* este es el usuario q yo genere podria poner javi@hotmail.com */
+    $Asunto = "ninguno";
+    $BodyHTML = "<h1>hola</h1><br /><a href=\"http://localhost/mailing/?claves=" . $sha1 . "\"<b></a>";
+    $BodyNOHTML = "hola que tal?";
+
+
+
+
+    //Load Composer's autoloader
+    require realpath($_SERVER["DOCUMENT_ROOT"]) . '/vendor/autoload.php';
+
+    //Instantiation and passing `true` enables exceptions
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        //$mail->SMTPDebug = SMTP::DEBUG_CONNECTION;                      //Enable verbose debug output
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = $HostSMTP;                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = $SendFromEMAIL;                     //SMTP username
+        $mail->Password   = $ContrasenaDelCorreo;                               //SMTP password
+        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = $PortSMTP;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+        //Recipients
+        $mail->setFrom($SendFromEMAIL, $QuienLoEnviaNAME);
+        //$mail->addAddress($SentToEmail, 'Joe User');     //Add a recipient
+        $mail->addAddress($SentToEmail);               //Name is optional
+        $mail->addReplyTo($SendFromEMAIL, $QuienLoEnviaNAME);
+        //$mail->addCC('cc@example.com');
+        //$mail->addBCC('bcc@example.com');
+
+        //Attachments
+        //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        //mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = $Asunto;
+        $mail->Body    = $BodyHTML;
+        $mail->AltBody = $BodyNOHTML;
+
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
 }
