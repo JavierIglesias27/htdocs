@@ -48,10 +48,10 @@ function registrarUsuario() {
 	}
 
 	$.ajax({
-		url: "./registrarse.php",
+		url: "./login.php",
 		type: "POST",
 		data: {
-			api: "checkEmail",
+			api: "loginUser",
 			email: inputEmail_valor,
 			password: inputPassword_valor,
 			captcha: document.getElementById("g-recaptcha-response").value,
@@ -68,6 +68,7 @@ function registrarUsuario() {
 				} else {
 					console.warn("TODO OK");
 					emailBoolean = true;
+					crearCookie(response.success);
 				}
 				coloresCampo(emailBoolean, passwordBoolean);
 			}
@@ -96,4 +97,35 @@ function coloresCampo(emailBoolean, passwordBoolean) {
 		inputPassword.classList.remove("inputSucces");
 		inputPassword.classList.add("inputError");
 	}
+}
+function crearCookie(user) {
+	user = JSON.parse(user);
+	var exdays = 30;
+	var d = new Date();
+	d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+	var expires = "expires" + d.toUTCString();
+	document.cookie = "email" + "=" + user.email + ";" + expires;
+	document.cookie = "nombre" + "=" + user.nombre + ";" + expires;
+	document.cookie = "token" + "=" + user.token + ";" + expires;
+	// console.log(getCookie("email"));
+	// console.log(getCookie("nombre"));
+	// console.log(getCookie("token"));
+
+	window.location.replace("./index.html");
+}
+
+function getCookie(cname) {
+	let name = cname.trim() + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(";");
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) == " ") {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
 }

@@ -24,35 +24,9 @@ switch ($_POST['api']) {
         break;
 }
 echo json_encode($myObject);
-function loginUser($email, $password, $myObject)
-{
-    $usuario = new stdClass();
-    $conn = new mysqli("localhost", "root", "", "pbd");
-    $sql = "SELECT * FROM usuarios_temp WHERE id= '" . $id . "';";
-    $result = $conn->query($sql);
-    if ($result->num_rows == 1) {
 
-        while ($row = $result->fetch_assoc()) {
-            $usuario->id = $row['id'];
-            $usuario->email = $row['email'];
-            $usuario->nombre = $row['nombre'];
-            $usuario->phone = $row['phone'];
-            $usuario->password = $row['password'];
-            $usuario->reg_date = $row['reg_date'];
-        }
-        $xstring = $usuario->id . "-" . $usuario->email . "-" . $usuario->nombre . "-" . $usuario->phone . "-" . $usuario->password . "-" . $usuario->reg_date;
-        $sha1 = sha1($xstring);
-        if ($clave == $sha1) {
-            insertUser($usuario);
-        }
-    } else {
-        echo 'Error:id not found';
-    }
-    $conn->close();
-}
 function checkCaptcha($captcha, $myObject)
 {
-
 
     $response = file_get_contents(
         "https://www.google.com/recaptcha/api/siteverify?secret=" . RECAPTCHA_V3_SECRET_KEY . "&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']
@@ -60,8 +34,10 @@ function checkCaptcha($captcha, $myObject)
     $response = json_decode($response);
     if ($response->success === false) {
         //Do something with error
+        $myObject->error = "NO recaptcha<br>";
     } else {
         if ($response->success == true && $response->score > 0.5) {
+            $myObject->success = "Human";
         } else if ($response->success == true && $response->score <= 0.5) {
             //Do something to denied access
             $myObject->error = "Human?<br>";
@@ -69,4 +45,28 @@ function checkCaptcha($captcha, $myObject)
             $myObject->error = "NO<br>";
         }
     }
+}
+function loginUser($email, $password, $myObject)
+{
+    $usuario = new stdClass();
+    $conn = new mysqli("localhost", "root", "", "pbd");
+    $sql = "SELECT nombre FROM usuarios WHERE email= '" . $email . "'&& password='" . md5($password) . "';";
+    $result = $conn->query($sql);
+    if ($result->num_rows == 1) {
+        while ($row = $result->fetch_assoc()) {
+
+            $usuario->email = $email;
+            $usuario->nombre = $row['nombre'];
+            $usuario->token = md5(time() . "-" . $usuario->email);
+            $sql = "UPDATE usuarios SET token='" . $usuario->token . "' WHERE email= '" . $email . "';";
+            $result_a = $conn->query($sql);/* hacer if xa comprobar q entre */
+
+            $myObject->success = json_encode($usuario);
+            // $myObject->error = null;
+            break;
+        }
+    } else {
+        echo 'Error:usuario not found';
+    }
+    $conn->close();
 }
