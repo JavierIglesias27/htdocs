@@ -36,7 +36,7 @@
 	</head>
 	<body>
 		<nav>
-			<div>
+			<div id="notRegister">
 				<a href="registrarse.html"><button>SignUp</button></a>
 				<a href="login.html"><button>SignIn</button></a>
 			</div>
@@ -45,9 +45,10 @@
 				<a href="#"><button>LogOut</button></a>
 			</div>
 		</nav>
+		notRegister
 		<script>
 			if (getCookie("nombre")) {
-				document.getElementById("notRegister").style.visibility = "visible";
+				document.getElementById("notRegister").style.visibility = "hidden";
 				document.getElementById("divUsuario").style.visibility = "visible";
 				document.getElementById("usuario").innerHTML = getCookie("nombre");
 			}
