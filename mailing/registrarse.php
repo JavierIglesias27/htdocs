@@ -96,18 +96,19 @@ function enviarmail($email)
 {
     $usuario = new stdClass();
     $conn = new mysqli("localhost", "root", "", "pbd");
-    $sql = "SELECT * FROM usuarios_temp WHERE email = '" . $email . "' ;";
+    $sql = "SELECT * FROM usuarios_temp WHERE email = '" . $email . "' ORDER BY id DESC LIMIT 1 ;";
     $result = $conn->query($sql);
     if ($result->num_rows == 1) {
 
         while ($row = $result->fetch_assoc()) {
+            $usuario->id = $row['id'];
             $usuario->email = $row['email'];
             $usuario->nombre = $row['nombre'];
             $usuario->phone = $row['phone'];
             $usuario->password = $row['password'];
             $usuario->reg_date = $row['reg_date'];
         }
-        $xstring = $usuario->email . "-" . $usuario->nombre . "-" . $usuario->phone . "-" . $usuario->password . "-" . $usuario->reg_date;
+        $xstring = $usuario->id . "-" . $usuario->email . "-" . $usuario->nombre . "-" . $usuario->phone . "-" . $usuario->password . "-" . $usuario->reg_date;
         $sha1 = sha1($xstring);
         // echo $sha1;
         sendMail($usuario, $sha1);
@@ -138,7 +139,7 @@ function sendMail($usuario, $sha1)
     //
     $SentToEmail = $usuario->email;/* este es el usuario q yo genere podria poner javi@hotmail.com */
     $Asunto = "ninguno";
-    $BodyHTML = "<h1>hola</h1><br /><a href=\"http://localhost/?clave=" . $sha1 . "\"><b>" . $sha1 . "</b></a>";
+    $BodyHTML = "<h1>hola</h1><br /><a href=\"http://localhost/mailing/nuevo_usuario.php?id=" . $usuario->id . "&clave" . $sha1 . "\"><b>" . $sha1 . "</b></a>";
     $BodyNOHTML = "hola que tal?";
 
 
