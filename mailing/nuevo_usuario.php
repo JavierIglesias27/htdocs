@@ -32,15 +32,20 @@ if (isset($_GET['id']) && isset($_GET['clave'])) {
     }
     $conn->close();
 }
+
+
 function insertUser($user)
 {
     $conn = new mysqli("sql4.freemysqlhosting.net", "sql4499631", "aVDL9RBswz", "sql4499631");
-    $sql = "INSERT INTO usuarios_temp(email,nombre,password,phone) VALUES('" . $user->email . "', '" . $user->nombre . "', '" . $user->password . "','" . $user->phone . "' )";
+    $sql = "INSERT INTO usuarios (email,nombre,phone,password,reg_date) VALUES ('" . $user->email . "','" . $user->nombre . "'," . $user->phone . ",'" . $user->password . "','" . date("Y-m-d H:i:s") . "');";
     if ($conn->query($sql) === TRUE) {
-        echo "<br/>OK";
-        header('Location:login.html');
+        echo "<br>OK";
+        $sql_a = "DELETE FROM usuarios_temp WHERE email='" . $user->email . "' || reg_date <= NOW() - INTERVAL 1 DAY;";
+        $conn->query($sql_a);
+        header('Location: login.html');
     } else {
-        echo "Error " . $conn->error;
+        echo "<br>ERROR";
+        //echo "Error: insert table \"usuarios\" " . $conn->error . " <br>" . $sql . "<br>";
     }
     $conn->close();
 }
