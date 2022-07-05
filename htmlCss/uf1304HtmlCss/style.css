@@ -1,0 +1,103 @@
+body {
+	background-color: grey;
+}
+div {
+	background-color: rgb(245, 239, 239);
+}
+fieldset {
+	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+legend {
+	background-color: grey;
+	color: white;
+}
+form fieldset div {
+	border: 2px solid yellow;
+	margin-left: 5px;
+	margin-top: 10px;
+}
+form fieldset div div {
+	border: 2px solid green;
+	text-align: left;
+	margin-left: 5px;
+}
+form fieldset div div label {
+	display: block;
+	margin-top: 5px;
+}
+form fieldset div div div {
+	border: 2px solid red;
+	text-align: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+.dret {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+.linea {
+	display: inline;
+}
+.negra {
+	border: 3px solid black;
+	width: 50%;
+	overflow: hidden;
+	margin: auto;
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 50%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+form fieldset div div div label {
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+input[type="text"],
+input[type="password"] {
+	width: 50%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+form fieldset div div div div {
+	border: 2px solid blue;
+	text-align: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+input[type="reset"],
+input[type="submit"] {
+	width: 20%;
+	min-width: 200px;
+	cursor: pointer;
+}
+
+input[type="reset"] {
+	background-color: rgb(216, 29, 29);
+	float: right;
+}
+
+input[type="submit"] {
+	background-color: green;
+	float: left;
+}
+
+.main {
+	margin: 20px;
+}
+footer {
+	background-color: red;
+	text-align: center;
+	border-radius: 20px;
+	position: absolute;
+	width: 99%;
+}

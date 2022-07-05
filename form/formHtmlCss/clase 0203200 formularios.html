@@ -1,0 +1,58 @@
+<DOCTYPE html>
+<html lang="es">
+        <head>
+            <meta charset="UTF-8"> 
+            <title> Examen 1 </title>
+            <meta name="Author" content="Javier Iglesias">
+            <meta name="Description" content="Examen">
+            <meta name="Viewport" content="width=device-with, initia-scale=1"> <!-- la linea de los moviles para que aparezca a escala-->
+            <meta http-equiv="refresh" content="30"> <!-- actualiza la pagina automaticamente-->
+            <link rel="icon" type="image/x-icon" href="C:\Users\javier\Desktop\practicas\perro.ico">
+        </head>
+        <body>
+            <form action="/action_page.php">
+                <label for="fname">First name:</label><br />
+                <input type="text" id="fname"><br />
+                <label for="lname">Last name:</label><br />
+                <input type="text" id="lname"><br /><br />
+                <input type="submit" value="Submit">
+                <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+            </form>
+            <form>
+              <h6>tabla SELECT</h6>
+              <label for="cars">Choose a car:</label>
+              <select id="cars" name="cars" size="3" multiple> 
+                  <!--el size me indica ek numero de valores a mostrar en la lista desplegable y puedo subir y bajar conla flecha-->
+                  <!--el name=car hay q ponerlo en todas las opciones aunque si solo lo pones aqui tmb funciona-->
+                    <option name="cars" value="null"></option> <!--puedes añadir un espacio en blanco y ponerlo como predeterminado que aqui no esta marcado-->
+                    <option name="cars" value="volvo">Volvo</option> 
+                    <option name="cars" value="saab">Saab</option>
+                    <option name="cars"value="fiat" selected>Fiat</option> <!--LA OPCION SELECTED SIRVE PARA QUE APAREZCA PRESELCIONADO UNO QUE ESTA VACIO-->
+                    <option name="cars" value="audi">Audi</option>
+            </select> 
+            <input type="submit"> <!--este boton esel de enviar-->
+            <!--el text area es xa elegir un trozo y escribir NO USAR EL INPUT XA ESTO-->
+            <br />
+            <textarea name="message" rows="10" cols="30"> <!-- en numero de filas y columnas() hace referecia al numero de letras para ampliar/reducir el cuadro-->
+                The cat was playing in the garden.
+            </textarea>
+            <br />
+            <button type="button" onclick="alert('Hello World!')">Click Me!</button>
+            
+            </form>
+            <!--fieldset crea un grupo-->
+
+            <!--datalist xa escribir la palabra en el formulario-->
+            <form action="/action_page.php">
+                <input list="browsers">
+                <datalist id="browsers">
+                  <option value="Internet Explorer">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </datalist>
+              </form>
+              
+        </body>
+</html>

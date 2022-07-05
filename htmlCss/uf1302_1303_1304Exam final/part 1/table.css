@@ -1,0 +1,39 @@
+table {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 20px;
+}
+table thead th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+table tbody td,
+table tbody th {
+	border: 1px solid black;
+	padding: 8px;
+}
+
+table tr:nth-child(even) {
+	background-color: grey;
+}
+
+table tbody tr:hover {
+	background-color: tomato;
+}
+table tbody th:hover {
+	background-color: red;
+}
+
+table thead th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: rgb(190, 16, 16);
+	color: white;
+}
+table tbody th {
+	background-color: green;
+	text-align: center;
+}

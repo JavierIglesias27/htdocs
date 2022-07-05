@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Jesús Fernández Toledo" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="C:\Users\Desarrollo\Desktop\practicas\practicaIndexejercio7/indexstyle.css">
+    <title>Ejercicio 7</title>
+    <style>
+         body{background-color: rgb(75, 75, 90);}
+         
+        #texto1 {
+            background-color:blueviolet;
+            border-style: solid;
+            width:70%;
+            float:left;
+            font-size: 150%;
+            text-align: justify;
+            font-family: verdana;
+                           
+      }
+      #p_texto1{ 
+            background-color: aliceblue; 
+            text-decoration: line-through;
+            text-align: center;
+            margin-bottom: 2em; /* esto mesepara el orson desde abajo 2em*/
+            text-transform: uppercase; /*para ponerlo en mayusculas*/
+      }
+         
+      #imagen1  {
+           
+           float:right;
+           width:20%;
+
+           border-style: dashed;
+           border-color: yellow;
+           border-width: 5px;
+           border-radius:10px;
+                 
+     }
+       
+      #separacion{
+            clear:both;
+            border-style: dotted;
+      }
+
+      #texto2 {
+           
+          
+            background-color: rgba(0, 0, 255, 0.822);
+            width:70%;
+            float:right;
+            font-family: Verdana;
+            font-size: 200%;
+            text-align: justify;
+
+            border-style: dashed;
+           border-color: blue; 
+           border-width: 5px;
+           border-radius:5px;
+            
+      }
+      #p_texto2{
+            background-color: rgb(15, 15, 15);
+            color:white;
+            text-align: center;
+
+      }
+    
+      #imagen2  {
+             border-style: dotted;
+             border-color: green; 
+            border-width: 5px;
+            border-radius:5px;
+           /* width:25%  aqui no le pomgo width xq en el html ya tiene width 200 y height 200*/
+            float:left;
+             
+      }
+     
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a class="active" href="#home">Home</a>
+        <a href=".\#news">News</a>
+        <a href=".\contacto.html" target="_self">Contact</a> <!--aqui llamo el link contacto que acabo de crear en htdocs-->
+        <div class="dropdown">
+            <button class="dropbtn">Dropdown 
+            <i class="fa fa-caret-down"></i> 
+            </button>
+            <div class="dropdown-content">
+                <a href="/">Home</a> <!--poner un #nombre se llama ancla-->
+                <a href="/#news">New</a>
+                <a href="/#other">Other</a>
+            </div>
+        </div> 
+        <a href="http://#">Wikipedia</a>
+        <a href="./ejercicio7.html" target="_blank">Ejercicio</a>
+
+        <div class="navbar-right">
+            <a href="#search">Search</a>
+            <a href="#about">About</a>
+        </div>
+    </div>
+        <div class="main">
+            <div id="texto1" >
+                En el momento en que entiendo verdaderamente a mi enemigo,en el momento en que le entiendo lo suficientemente
+                bien como para derrotarle, entonces, en ese preciso instante, también le quiero. 
+                Creo que es imposible entender realmente a alguien, saber lo que quiere, saber lo que cree, y no amarle
+                como se ama a sí mismo. Y entonces, en ese preciso momento, cuando le quiero ...
+                <p id="p_texto1" >- Orson Scott Card -</p>
+            </div>
+            <div id="imagen1"  >
+                <figure>
+                    <img class="imagenes" src="imagen1.jpeg" alt="Orson Scott Card">
+                </figure>
+            </div>
+            <div id="separacion" >
+                esta es la separacion mediante both
+            </div>
+            <div id="texto2" >
+            Si todo lo tomas personal, vivirás ofendido la mayor parte de tu vida, recuerda que las personas no
+            te hacen cosas: las personas hacen cosas y tú decides si te afectan o no.
+            <p id="p_texto2" >– El Principito-</p>
+            </div>
+            <div id="imagen2" >
+                <figure>
+                    <img class="imagenes" src="imagen2.jfif" alt="" width = "200px" height = "200px">
+                </figure>
+            </div>
+        </div>
+    </body>
+</html>

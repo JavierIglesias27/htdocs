@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Javier Iglesias" />
+    <meta charset="UTF-8">
+    
+    <title>practica16</title>
+    <style>
+       body{background-color: blue;} 
+           
+       div{
+           position: absolute; 
+           border: 4px solid black
+       }
+
+       div#div1{
+           background-color: rgb(211, 34, 143); 
+            width:353px;
+           height: 113px;
+
+        }
+       div#div2{background-color: aquamarine; /*los div son cajas que se ordenan una encima de la otra*/
+            width:353px;
+             height: 113px;
+           top:50px;
+           z-index: 2; /* el z index sirve para que el bloque se ponga delante*/
+           /* si le quito el top 50 se quedan superpuestos el div 1 y el div 2 y al poner el z index =2 me superpone el div2 */
+           /* OJO si tengo tres div y le pongo z-index 3 me pondra el div 2 en la 3 altura xa poder verlo en pantalla y trabajar con el*/
+        }
+
+    </style>
+</head>
+<body>
+        
+        <div clas="main">
+
+            <div id="div1">
+                texto1
+            </div>
+            <div id="div2">
+                texto2
+            </div>
+        
+        
+        </div>
+     
+    </body>
+</html>

@@ -1,0 +1,20 @@
+footer {
+	width: 95%;
+	margin: auto;
+	text-align: center;
+	border-radius: 30px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-top: 20px;
+	background-color: rgb(66, 66, 241);
+}
+#footer b {
+	color: black;
+}
+#footer p {
+	color: red;
+}
+#footer a {
+	color: yellow;
+}

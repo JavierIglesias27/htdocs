@@ -1,0 +1,41 @@
+<DOCTYPE html>
+<html lang="es">
+        <head>
+            <meta charset="UTF-8"> 
+            <title> Examen 1 </title>
+            <meta name="Author" content="PRACTICA 7">
+            <meta name="Description" content="CREAR FORMULARIO">
+        </head>
+        <body>
+            <form action=".\otra.html" method="get" target="_blank"> <!--ACTION ES EL DOCUMENTOQ ENLAZA CON EL ARCHIVO OTRA.HTML QUESE  CREA A PARTE-->
+                <fieldset>
+                <legend> Persona + mail</legend>
+                    <label for="fname">Mail</label><!-- label me indica el nombre que va a tener la etiqueta en pantalla en este caso Mail-->
+                    <input type="text" id="Mail" placeholder="ASD" autofocus  name="mail" required>
+                    <!--required al tocar el boton enviar te recuerda que este campo es obligatorio -->
+                    <!--required se coloca pegado al simbolo mayor del final -->
+                    <!--placeholder poner letra sobreescrita que desaparece al escribir sobre el recuadro de mail--->
+                    <!--autofocus me marca de color negro el recuadro de mail en este caso-->
+                    <!--al poner name="mail" y tocar el boton de enviar los datos me esta redirigiendo a este nombre Mail-->
+                    <br />
+                    <label for="lname">Contraseña</label><br />
+                    <input type="password" id="lname"><br /><br />
+                    <!--disable deshabilita el cuadrado xa no poder escribir-->
+                    <!--si type=pasword sale la contraseña codficada y con type=text puede leer la contraseña-->
+                    <label>Aceptar condicones uso predeterminada</label>
+                    <input type="checkbox" checked name="pepe"> 
+                    <!--AL PONER NAME=""SE ENVIA AL FLINK DE  URL -->
+                    <!--SI NO PONES NAME="" NO SE ENVIA AL FLINK DE  URL -->
+                    <!--El checkbox que cre un cuadro para aceptar o no las condiciones-->
+                    <!--el checked me marca automanticamente el stick del checkbox-->
+                    <br />
+                    <br />
+                    <p>Click Send para enviar mail</p>
+                    <br />
+                <input type="submit" value="Submit using GET"> <!-- si este botton esta dentro de form no hace falta ponerlo aqui-->
+                <input type="submit"  formmethod="post" value="Submit using POST"><!--aqui puedes pone sel metodo post-->
+                <br/>
+                </fieldset>   
+            </form>
+        </body>
+    </html>

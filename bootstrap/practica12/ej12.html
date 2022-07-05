@@ -1,0 +1,64 @@
+<!--dado este codigo poner  los recuadros uno al lado de otro-->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+		<meta name="generator" content="Hugo 0.88.1">
+		<title>formulario</title>
+		<!-- Bootstrap core CSS -->
+		<link href="C:\Users\Desarrollo\Desktop\bootstrap-4.6.1-dist\css\bootstrap.min.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="C:\Users\Desarrollo\Desktop\bootstrap-4.6.1-dist\js\bootstrap.bundle.min.js" ></script>
+		<!-- Custom styles for this template -->
+		<style>
+			body{
+				background-color:#848484;
+				padding-bottom: 700px;
+			}
+			div.container{
+				background-color:white;
+			}
+			div.col-sm{
+				background-color:red;
+			}
+			form{
+				margin: 10px
+			}
+		</style>
+	</head>
+	<body class="text-center">
+		<main role="main" class="container-fluid">
+	
+			<br />
+			<div class="container-fluid bg-light rounded ">
+				<form>
+					<div class="row justify-content-center ">
+						
+						<div class="col-md-3.ms-md-auto"> <!-- el form group hay que cambiarlo x col-md para que se ajuste y ademas haga de responsivo al mover la pagina-->
+							<label for="exampleInputEmail1">Email address</label>
+							<input type="email" class="form-control align-text-left" id="staticName" name="staticName" placeholder="Name Surname" data-lang="index-form-input-placeholder-yourname" onkeyup="checkName(this.value)">
+							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+						</div>
+
+						<div class="col-md-3.ms-md-auto">
+							<label for="exampleInputPassword1">Password</label>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						</div>
+					</div>
+					<br />
+						<!--al cerrar el div de class row solo afecta a los que estan dentro y los otros se desplazan-->
+						<div class="form-check ">
+							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+							<label class="form-check-label" for="exampleCheck1">Check me out</label>
+						</div>
+					<br />
+						<button id="multibutton" type="submit" class="btn btn-primary" data-action='submit' data-lang="index-form-button-login" disabled>Submit</button>
+					<br />	
+				</form>
+			</div>
+		</main>
+	</body>
+</html>

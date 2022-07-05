@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0; /* empieza en la pate superior fijada sin margen*/
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* posicion fija como poner una chincheta-- si le quitamos esta linea la barra de hogar noticia no te sugue hacia abajo*/
+  top: 0; /* arriba del todo*/
+  width: 100%; /* 100 del espacio*/
+}
+
+.navbar a { /* solo afecta a todo lo q este dentro de la etqueta nav a que son new contacto*/
+  float: left; /* link en lado izquierdoo*/
+  display: block;/* en un bloque*/
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px; /* centra la imagen entre 14= indica derecha-izquierda de 14 y arriba-abajo de 16*/
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover { /* es el estado es decir  al poner el mouse encima de la etiquetase pondra de color blanco*/
+  background: #ddd;
+  color: black;
+}
+
+.navbar a.active { /* solo q esten dentro de la clase navbar, luego seleccionamos solo  la etiqueta <a>  q eslinks y dentro de alli los que tengan la clase active */
+  background-color: #04AA6D;
+  color: white;
+}
+
+.navbar-right {
+  float: right;
+}
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  /*height: 1500px;*/ /* Used in this example to enable scrolling */
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="http://#">Wikipedia</a>
+  <div class="navbar-right">
+    <a href="#search">Search</a>
+    <a href="#about">About</a>
+  </div>
+</div>
+<div class="main">
+  <h1 id="home">Fixed Top Menu</h1>
+  <h2>Scroll this page to see the effect</h2>
+  <h2>The navigation bar will stay at the top of the page while scrolling</h2>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+</div>
+<div>
+<h1 id="news">Fixed Top Menu news</h1>
+  <h2>Scroll this page to see the effect</h2>
+  <h2>The navigation bar will stay at the top of the page while scrolling</h2>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+</div>
+</body>
+</html>

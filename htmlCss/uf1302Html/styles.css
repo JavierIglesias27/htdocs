@@ -1,0 +1,12 @@
+table{
+	width: 100%;
+}
+table, th, td {
+	border: 1px solid black;
+}
+p{
+	font:100% serif;
+}
+a{
+	color:#0000EE
+}

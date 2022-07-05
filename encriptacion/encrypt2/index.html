@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>OTRO formato de encriptacion</title>
+		<!--mas efectiva-->
+	</head>
+	<body>
+		<script>
+			const crypt = (salt, text) => {
+				const textToChars = (text) =>
+					text.split("").map((c) => c.charCodeAt(0));
+				const byteHex = (n) => ("0" + Number(n).toString(16)).substr(-2);
+				const applySaltToChar = (code) =>
+					textToChars(salt).reduce((a, b) => a ^ b, code);
+
+				return text
+					.split("")
+					.map(textToChars)
+					.map(applySaltToChar)
+					.map(byteHex)
+					.join("");
+			};
+
+			const decrypt = (salt, encoded) => {
+				const textToChars = (text) =>
+					text.split("").map((c) => c.charCodeAt(0));
+				const applySaltToChar = (code) =>
+					textToChars(salt).reduce((a, b) => a ^ b, code);
+				return encoded
+					.match(/.{1,2}/g)
+					.map((hex) => parseInt(hex, 16))
+					.map(applySaltToChar)
+					.map((charCode) => String.fromCharCode(charCode))
+					.join("");
+			};
+
+			//
+
+			// encrypting
+			//const encrypted_text = crypt("secretPass", "palabra a encriptar:Hello"); // -> 426f666665
+			const encrypted_text = crypt("salt", "Hello"); // -> 426f666665
+			console.log(encrypted_text);
+			// decrypting
+			//const decrypted_string = decrypt("salt",encrypted_text ); // -> Hello
+			const decrypted_string = decrypt("salt", "426f666665"); // -> Hello
+
+			console.log(decrypted_string);
+		</script>
+	</body>
+</html>

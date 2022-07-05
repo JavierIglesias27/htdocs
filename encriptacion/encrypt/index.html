@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<!--aplicar este a js en el rpyecto mailing-->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+			integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o="
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<label>encrypted</label>
+		<div id="demo1"></div>
+		<br />
+
+		<label>decrypted</label>
+		<div id="demo2"></div>
+
+		<br />
+		<label>Actual Message</label>
+		<div id="demo3"></div>
+		<script>
+			//cogo la palabra=message y la encrypto
+			var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
+			// Secret Passphrase= es por si faltan bytes pones aqui texto y te lo completa
+			//U2FsdGVkX18ZUVvShFSES21qHsQEqZXMxQ9zgHy+bu0=
+
+			var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+			//4d657373616765
+
+			document.getElementById("demo1").innerHTML = encrypted;
+			document.getElementById("demo2").innerHTML = decrypted;
+			document.getElementById("demo3").innerHTML = decrypted.toString(
+				CryptoJS.enc.Utf8
+			);
+		</script>
+		<hr />
+		<br />
+		<br />
+		<label>encrypted</label>
+		<input id="demo4" />
+		<br />
+
+		<label>decrypted</label>
+		<input id="demo5" />
+
+		<br />
+		<label>Actual Message</label>
+		<input id="demo6" />
+		<button onclick="exe(document.getElementById('demo6').value)">
+			launch
+		</button>
+		<script>
+			function exe(text) {
+				var encrypted = CryptoJS.AES.encrypt(text, "Secret Passphrase");
+				//U2FsdGVkX18ZUVvShFSES21qHsQEqZXMxQ9zgHy+bu0=
+
+				var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+				//4d657373616765
+
+				document.getElementById("demo4").value = encrypted;
+				document.getElementById("demo5").value = decrypted;
+			}
+		</script>
+	</body>
+</html>

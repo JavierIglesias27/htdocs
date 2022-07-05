@@ -1,0 +1,34 @@
+<DOCTYPE html>
+    <html lang="es">
+            <head>
+                <meta charset="UTF-8"> 
+                <title> CREAR DIRECCION XA ENVIAR DATOS </title> 
+               
+            </head>
+            <body>
+                <button type="button" onclick="getURL()">Get Page URL</button>  
+                <!--al poner onclick me aparece un mensaje de los datos que he puesto formulario mail o contraseña si no esta desactivada-->
+                <script>
+
+                    function getURL() {
+                    /*TIPO DE JS
+                        1-LET
+                        2-VAR
+                        3-CONST*/
+                            const urlParams = new URLSearchParams(window.location.search);
+                            alert("mail="+urlParams.get('mail')+"\n password="+urlParams.get('password') +"\n pepe="+urlParams.get('pepe'))
+                                     }
+                /* el simbolo "\n hola casa "\n   me estas separando la lineas q aparecen en el cuadro de obtencio link*/
+                </script>
+                <!--el script siempre debe ir al final de todo xq primero debe printearse primero div y luego el script-->
+            </body>
+    </html>
+
+    <!--SI AQUI COPIO SOLO 
+    <SCRIPT>
+    const urlParams = new URLSearchParams(window.location.search);
+    alert("mail="+urlParams.get('mail')+"\n password="+urlParams.get('password') +"\n pepe="+urlParams.get('pepe'))
+    </SCRIPT>                    
+        ME ABRE EL CUADRO SIN PULSAR EL BOTON SALE DIRECTAMENTE    -->
+
+

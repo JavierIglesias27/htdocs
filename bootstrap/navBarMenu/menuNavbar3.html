@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- para poner el trangulito hay q acudir a una pagina web y descargar link-->
+		<style>
+		body {
+		  margin: 0;
+		  font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.navbar {
+		  /*overflow: hidden;*/ /* el overflow me permite salirme del labarra del menu lo que hace que el menu crezca o el body se va hacia abajo*/
+		  background-color: #333;
+		  position: fixed;/* es que al mover la pantalla se mantiene en el mismo sitio*/
+		  top: 0; /*esta pegado arriba de todo*/
+		  width: 100%;
+
+		}
+		.navbar a { /* el espacio nav a hace de filtro es decir todo lo que esta dentro de nav y sea una a en este caso a home, new, contatc...*/
+		  float: left;
+		  display: block;
+		  color: #f2f2f2;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		  font-size: 17px;
+		}
+
+		.navbar a:hover { /*primero filtramos y :hover es poner de color blanco al ponerse encima del bloque y eltexto se pone negro*/
+		  background: #ddd;
+		  color: black;
+		}
+
+		.navbar a.active { /*filtramos y a.active s que afecta solo a la clase llamada active y pone boton homede color verde*/
+		  background-color: #04AA6D;
+		  color: white;
+		}
+
+		.navbar-right {/*-right es el nombre que la de el guion es para no dejar espacios xq guion css no hace nada*/
+		  float: right;
+		}
+		.main {
+		  padding: 16px;
+		  margin-top: 30px;
+		}
+        .dropdown {
+            float: left; /*flota a la derecha es decir contact se apoya sobre la derecha en dropdown*/
+            /*overflow: hidden;*/
+        }
+        .dropdown .dropbtn { /*filtra una clase dentro de una clase*/
+            font-size: 16px;  /*tamaño de la letra sin poner H*/
+            border: none; /*borde del cuadro*/
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;/* heredaro que coge el que tenia justo arriba*/
+            font-family: inherit; /* heredaro que coge el que tenia justo arriba*/
+            margin: 0; 
+        }
+        .dropdown:hover .dropbtn { /* dentro de la clase dropdown al ponerme encima con el raton encima se pone de color rojo al dropbtn*/
+            background-color: red;
+        }
+        .dropdown-content {/* estilos al link 1 2 y 3*/
+            display: none;
+            position: absolute; /*pone los links uno debajo del otro*/
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* estilo caja de los links*/
+            z-index: 1;
+        }
+        .dropdown-content a {/* hace seleccion solo a cada caja de los links*/
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover { /* una vez seleccion solo a cada caja de los links te los pone de color blanco*/
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+		</style>
+		
+	</head>
+	<body>
+
+		<div class="navbar">
+			<a class="active" href="#home">Home</a>
+			<a href="#news">News</a>
+			<a href="#contact">Contact</a>
+            <div class="dropdown"><!--al poner el div lo ecajonas en el sitio adecuado xa que no desmonte-->
+                <button class="dropbtn">Dropdown 
+                <i class="fa fa-caret-down"></i> <!--esto me pone el triangulo de la pestaña para desplegar-->
+                </button>
+                <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+                </div>
+            </div> 
+			<a href="http://#">Wikipedia</a>
+			<div class="navbar-right">
+				<a href="#search">Search</a>
+				<a href="#about">About</a>
+			</div>
+		</div>
+
+		<div class="main">
+		  <h1 id="home">Fixed Top Menu</h1>
+		  <h2>Scroll this page to see the effect</h2>
+		  <h2>The navigation bar will stay at the top of the page while scrolling</h2>
+
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		</div>
+		<div>
+		<h1 id="news">Fixed Top Menu news</h1>
+		  <h2>Scroll this page to see the effect</h2>
+		  <h2>The navigation bar will stay at the top of the page while scrolling</h2>
+
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		  <p>Some text some text some text some text..</p>
+		</div>
+
+	</body>
+</html>

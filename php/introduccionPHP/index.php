@@ -79,7 +79,8 @@
                 echo  '<li>'.$i.'</li>';
 
             }
-        }         
+        }
+         
 
         ?><!-- al poner esto indico q cierro php-->
       </ul>

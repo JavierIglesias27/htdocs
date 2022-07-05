@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<head>
+		<meta charset="UTF-8" />
+		<title>IFCD0110-UF1304</title>
+		<meta name="author" content="Javier Iglesias Romero" />
+		<meta
+			name="description"
+			content="CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110) UF1304"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href=".\style.css">
+		
+	</head>
+
+	<body>
+		<div class="main">
+			<form action="./otra.html" method="get" target="_blank">
+				<fieldset>
+					<legend>Personalitzada:</legend>
+					<div>
+						<div>
+							<p>Dades personal</p>
+							<div>
+								<label for="fname">Nom:</label>
+								<input type="text" name="fname" autofocus required />
+							</div>
+							<div>
+								<label for="email">Correu electronic:</label>
+								<input
+									type="mail"
+									name="email"
+									placeholder="Email"
+									autocomplete="on"
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$]"
+								/>
+							</div>
+							<div>
+								<label for="password">Password:</label>
+								<input type="password" name="password" required />
+							</div>
+							<div>
+								<label for="url">URL:</label>
+								<input
+									type="url"
+									name="url_control"
+									placeholder="Esde tu pagina cribe la url"
+								/>
+							</div>
+						</div>
+						<div>
+							<div>
+								<div>
+									<label for="date">Data:<label>
+									<input type="date" name="date"value="2022-04-07" />
+								</div>
+								<div>
+									<label for="time">Temps:<label></label>
+									<input type="time"  name="time "value="14:00" />
+								</div>
+							</div>
+							<div>
+								<div>
+									<label for="mes">Mes:<label>
+										<input type="month" name="mes" value="2022-04" />
+								</div>
+								<div>
+									<label for="setmana">Setmana:<label></label>
+									<input type="week" name="setmana"value="2022-W14" />
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div>
+						<div class="dret">
+							<label class="linea" for="cond">Comprobació 1</label>
+							<input type="checkbox"  name="cond" value="si" checked required>
+							<br />
+							<label  class="linea"for="cond">Comprobació 2</label>
+							<input type="checkbox"  name="cond" value="si" checked required>
+
+						</div>
+						<div>
+							<label for="cond">Número(min-10, max 10)</label>
+							<input type="number" value="3" min="-10" max="10" />
+						</div>
+						<div>
+							<label for="phone">Telefon</label>
+							<input type="tel" name="phone" pattern="+[0-9]{2}-[0-9]{9}" />
+						</div>
+					</div>
+					<div>
+						<div>
+							<p>Seleccio:</p>
+							<div class="center">
+								<label for="opcion_1">HTML</label>
+							<input type="radio" id="opcion_1" name="opcion" value="html" />
+							</div>
+							<div class="center">
+							<label for="opcion_2">CSS</label>
+							<input type="radio" id="opcion_2" name="opcion" value="css" checked/>
+							</div>
+							<div class="center">
+								<label for="opcion_3">JS</label>
+							<input type="radio" id="opcion_3" name="opcion" value="js" />
+							</div>
+						</div>
+						<div>
+							<label for="color_control">Color</label>
+							<input type="color"name="color_control" value="#ff0000">
+						</div>
+						<div>
+							<label for="selector">C.Autonomo:</label>
+							<select name="selector" multiple>
+								<option value=""></option>
+								<option value="cas" selected>Castilla y Leon</option>
+								<option value="cat" selected>cataluña</option>
+								<option value="and">andalucia</option>
+								<option value="casm">Castilla-La Mancha</option>
+								<option value="arag">Aragon</option>
+								<option value="bal">Islas Baleares</option>
+								<option value="can">Islas canarias</option>
+								<option value="cant">Cantabria</option>
+								<option value="mad">Comunidad de madrid</option>
+								<option value="val">Comunidad Valenciana</option>
+								<option value="nav">Comunindad foral de navarra</option>
+								<option value="ext">Extremadura</option>
+								<option value="gal">Galicia</option>
+								<option value="pas">Pais Vasco</option>
+								<option value="prin">Principado Asturias</option>
+								<option value="mur">Región de Murcia</option>
+								<option value="rio">La Rioja</option>
+							</select>
+						</div>
+					</div>
+					<div >
+						<div>
+								<div class="negra">
+									<textarea cols="40" rows="5" name="area"  placeholder="Insertar texto"></textarea>
+								</div>
+							
+								<div class="negra">
+								<textarea width="300px" height="100px" name="area"  placeholder="Insertar texto"></textarea>
+								</div>
+							
+								<div class="negra">
+									<input type="file"  name="file" value="" accept=".zip, .rar, .jpg, .gif"/>
+								</div>
+							</div>
+							<div class="negra">
+
+								<input type="submit" value="Enviar" />
+								<input type="reset" value="reset" />
+							
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<footer>
+			<p><b>author</b>: Javier Iglesias Romero</p>
+			<p><a href="mailto:jiglesro7@gmail.com.com">jiglesro7@gmail.com</a></p>
+			<p>
+				<b>nom del curs</b>: CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110)
+			</p>
+			<p><b>data</b>: 07/04/2022</p>
+		</footer>
+	</body>
+</html>

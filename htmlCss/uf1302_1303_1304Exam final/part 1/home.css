@@ -1,0 +1,40 @@
+.var1 {
+	border: 2px solid blue;
+	background-color: tomato;
+	border-radius: 45px 40px 20px 20px;
+}
+.var2 {
+	border-top-left-radius: 20px;
+	border-top-right-radius: 45px;
+	border-bottom-left-radius: 80px;
+	background-color: tomato;
+	border: 2px dashed green;
+}
+section {
+	margin: 40px;
+}
+.main h2,
+.main h1 {
+	text-transform: capitalize;
+}
+figure {
+	text-align: center;
+}
+figcaption {
+	background-color: blue;
+	color: red;
+	text-align: center;
+}
+
+.top {
+	text-align: center;
+}
+
+.textoencima {
+	position: relative;
+	top: -425px;
+	left: -325px;
+}
+.top p {
+	font-size: 30px;
+}

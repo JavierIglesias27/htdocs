@@ -1,0 +1,5 @@
+
+		.color{background-color: yellow;}	/*si cambiamos el yellow a red se cambio el documento ej7*/
+		#blue{ background-color: #4466d8;} /*le ponemos id xq solo hay un azul yno se puederepetir*/
+		td.black{background-color: #050100;color:aliceblue} /*puedes poner fondo de recuadro y color de la letra y es una subclase*/
+		/*al poner td.black creas  una subclase y actua como una clase*/

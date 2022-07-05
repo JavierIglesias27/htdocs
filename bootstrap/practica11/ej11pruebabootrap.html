@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Page Tíàtle</title>
+		<meta name="author" content="Mi nombre">
+		<meta name="description" content="Free Web tutorials">
+		<link rel="stylesheet" href="styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="C:\Users\Desarrollo\Desktop\bootstrap-4.6.1-dist\css\bootstrap.min.css" >
+		<!--steelsheet me indica que es codigo css-->
+		<style>
+			.color{background-color: rgb(201, 196, 196);}
+		</style>
+	</head>
+	<body  style="background-color: grey;"class="text-center">
+		<br />
+		<main role="main" class="container-fluid"> <!--poner simpre el main xa botdtrap con role y class-->
+		<div class="container color  ">
+			<!-- Content  -->
+		  <form>
+			<h2>Formulario <span class="badge bg-secondary ">Nuevo!!!!!!!!</span></h2>
+			<div class="row" > <!--es el que me crea las filas y puedo moverlas, reducirlas...-->
+				<div class="col-md" >
+			  		<label  for="exampleInputEmail1" class="form-label">Nombre </label>
+			  		<input  type="email" class="form-control col-md" id="exampleInputEmail1" aria-describedby="emailHelp">
+			  		<div class="alert alert-dark" role="alert">
+					No olvidar Primer Apellido!!!!!
+			  		</div>
+				</div> 
+			</div>
+
+			<div class="row" >
+				<div class="col-md">
+			  		<label for="exampleInputPassword1" class="form-label">DNI</label>
+			  		<input type="password" class="form-control" id="exampleInputPassword1">
+				</div>
+			</div>
+
+			<div class="row" >
+				<div class="col-md">
+					<label for="formFile" class="form-label">Elegir URL</label>
+					<input class="form-control" type="file" id="formFile">
+				</div>
+			</div>
+			<br/>
+
+			<div class="row">
+				<div class="col-md">
+					<div  style="text-align:left;"class="alert alert-dark" role="alert">
+					 click link    <a href="#" class="alert-link">www.fallllll.es</a>   en caso de error!!!!
+					</div>
+				</div>
+			</div>
+			<div class="mb-3 form-check">
+			  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+			  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+			</div>
+			<div clas="row">
+				<div class="col-md">
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div>
+			</div>
+		</form>
+		</div>
+	</main>
+	</body>
+</html>

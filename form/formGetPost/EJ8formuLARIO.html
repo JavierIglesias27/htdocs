@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Page Tíàtle</title>
+		<meta name="author" content="Mi nombre">
+		<meta name="description" content="Free Web tutorials">
+		<link rel="stylesheet" href="styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+	<style>
+        
+		legend {
+		  background-color: gray;
+		  color: white;
+		  padding: 5px 10px;
+		}
+		input {
+		  margin: 5px;
+		}
+        form{ 
+           background-color: orange;/* esto se pone xa ver los limites de los bordes 350 el cuadro y 400 el fieldset*/
+            /*margin-top: -100px;  este -100 dice q si d euna lado me sobra espacio restalo del otro*/
+           /*margin-left: -100px;*/
+            position: fixed;
+            margin: auto;
+            height:350px;
+            top:0;left: 0;right: 0;bottom: 0;
+            /*justify-content: center; /*para centrar el contenido de la celda*/
+            
+        }
+		    fieldset{
+			width: 400px;
+			margin: 0 auto;
+			text-align:center;
+			background-color: #eeeeee;
+		}
+		div{
+			border: 1px solid red;
+			margin-top:20px;
+		}
+		div.left{
+			text-align:left;
+			padding-left: 25%;
+		}
+		.right{
+			text-align:right;
+			padding-right: 31%;
+			padding-left: 25%;
+		}
+	</style>
+	</head>
+	<body>
+		<form action=".\otra.html" method="get" target="_blank">
+			<fieldset> <!--esto me hace el recuadro y por eso en el style le pongo atributos-->
+			<legend>Personalia:</legend>
+				<div class="left">
+					<label for="fmail">Email:</label><br />
+					<input type="text" id="fmail" placeholder="email@example.com" name="mail" autofocus required>
+				</div>
+				<div class="left">
+					<label for="fpassword">Password</label><br />
+					<input type="password" id="fpassword" placeholder="Password" name="password" required>
+				</div>
+				
+				<div class="right">
+					<label>He leído y acepto los términos y condiciones de uso</label><br />
+					<input type="checkbox" name="pepe" checked required>
+				</div>
+				
+				<div>
+					<input type="submit" value="Submit using GET">
+					<input type="submit" formmethod="post" value="Submit using POST">
+				</div>
+			</fieldset>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+#contenedor{
+    width:80%;
+    max-width:950px;/*para asegurarme que no se hace mas grande de loq tocaria en vez de poner margin right de 400px en el contenido y se mantiene automatico*/
+
+}
+#logo{
+    font-size: xx-large;/*xa hacer ellogotipo mas grande, pequeño...*/
+    font-family: sans-serif;
+}
+#cabecera{
+    
+    font-size: 2em;
+    margin-bottom: .5em;/* .5 me indica 0,5*/
+}
+#menu{
+    margin-bottom: 6em;
+
+}
+    #menu a{
+        text-decoration: none; /* aqui que quito el subrayado del link*/
+        
+    }
+    #menu li{
+        list-style-type: none; /*le quito los puntos de delante de la lista*/
+        float:left; /*coloco el inicio, cntacto.. horizontamente */ 
+        /* display:inline; con esto pongo la lista en horizontal y solo se debe usar xa formularios*/
+        margin:0px; /*con esto consigo q inicio sobre nostros y contacto tenga mas espacio entre ellos*/
+        padding:10px; /*con esto consigo q inicio sobre nostros y contacto tenga mas espacio entre ellos*/
+        
+    }    
+
+    #menu li a:hover{
+        color:black; /*al poner el curso encima se pone de color negro*/
+    
+    }
+    #menu li a:visited{
+        color:red; /*se ponen rojo xq ya los he visitado y x eso me aparecen en rojos si borro el historial  se debe poner azul/negro*/
+       
+        
+    }
+
+#contenido{
+  
+    background: grey;
+    color:white;
+    border-style: solid;
+    border-color: red;
+    border-width: 2px;
+    border-radius:0px;
+}
+    .articulo a {
+    color:blue;
+    } 
+
+    .articulo h2{
+        font-family: verdana;
+        font-size: 25px;
+        color:red;
+        
+    }

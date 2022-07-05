@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>IFCD0110-UF1302/1303/1304</title>
+		<meta name="author" content="Javier Iglesias Romero" />
+		<meta
+			name="description"
+			content="CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110)"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./menu.css" />
+		<link rel="stylesheet" href="./home.css" />
+		<link rel="stylesheet" href="./party.css" />
+		<link rel="stylesheet" href="./table.css" />
+		<link rel="stylesheet" href="./form.css" />
+		<link rel="stylesheet" href="./footer.css" />
+		<style>
+			html {
+				scroll-behavior: smooth;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: #848484;
+			}
+			header {
+				width: 100%;
+				height: 75px;
+				line-height: 50px;
+				text-align: center;
+				font-family: sans-serif;
+				position: fixed;
+				top: 0;
+			}
+			.anchor {
+				display: block;
+				position: relative;
+				top: -150px;
+				visibility: hidden;
+			}
+			.main {
+				background-color: white;
+				width: 95%;
+				margin: auto;
+				border-radius: 20px;
+				padding: 10px;
+				margin-top: 100px;
+			}
+
+	</style>
+	</head>
+	<body>
+		<header>
+			<nav class="menu">
+				<input type="checkbox" id="menuToggle" />
+				<label for="menuToggle" class="menu-icon">&equiv;</label>
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<li><a href="#party">Party</a></li>
+					<li class="dropdown">
+						<a class="dropbtn">Dropdown</a>
+						<div class="dropdown-content">
+							<a href="#table">Table</a>
+							<a href="#form">Form</a>
+							<a href="#footer">Footer</a>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<!-- HOME-->
+		<div class="main">
+			<h2><a id="home" class="anchor"></a>Home</h2>
+			<section class="var1">
+				<h1>lorem ipsum</h1><pre><code>
+&#60;html lang&#61&quotes&quot&#62;
+	&#60;head&#62;
+		&#60;meta charset&#61&quotUTF-8&quot&#47&#62;
+	&#60;head&#47&#62;
+&#60;html&#47&#62;
+				</code></pre>
+			</section>
+
+			<section class="var2">
+				<h1>lorem ipsum</h1>
+				<pre>
+Lorem  ipsum dolor sit amet,
+
+	consectetur adipiscing elit.MOrbi commodo
+			dignisimm lectus.					<b>Ut Sagittis est cursus est efficitur</b>
+		nec tempus
+			lorem dignisimm. Nunc
+				id torot neque.
+	Donec tincidunt tortor non. 
+					</pre>
+				
+			</section>
+			<figure> 
+				<img src="https://www.w3schools.com/html/pic_trulli.jpg" alt="Trulli">
+					<figcaption>Peu d´imatge (figure)</figcaption>
+			</figure>
+			<div class="top">
+				<img src="https://www.w3schools.com/html/pic_trulli.jpg" alt="Trulli" width="40%">
+				<p class="textoencima">Top Left</p>
+			</div>
+			<!-- https://www.w3schools.com/html/pic_trulli.jpg -->
+		</div>
+		<!-- PARTY -->
+		<div class="main">
+			
+			<h2> <a id="party" class="anchor"></a>Party:</h2>
+			<ol type="1">
+				<li class="blue">
+					Drinks:
+					<ul class="red">
+						<li>COFFE</li>
+						<li><a href="#" target="_blank">TEA</a></li>
+						<li>WHATER</li>
+					</ul>
+				</li>
+				<li class="blue">
+					Food:
+					<ol  class="orange" type="i">
+						<li>crips</li>
+						<li>sweets</li>
+						<li>pie</li>
+					</ol>
+				</li>
+				<li class="blue">
+					Decoration:
+					<ul class="red">
+						<li>CARDBOARD</li>
+						<li>GARLAND</li>
+						<li>BALLONS</li>
+						<ul  class="circle blue">
+							<li>LOOSE</li>
+							<li>PIÑATAS</li>
+							<li>ARCHES</li>
+							<ul class="disc green">
+								<li>LETTER</li>
+								<li>NUMBER</li>
+								<li>RAINBOW</li>
+							</ul>
+						</ul>
+					</ul>
+				</li>
+				<li class="blue">
+					Gift:
+					<ol type="A">
+						<li class="orange">None</li>
+					</ol>
+				</li>
+			</ol>
+			<!-- llista2 -->
+			<div id="list">
+				<ul>
+						<li>HTML</li>
+						<li>CSS</li>
+						<li>JS</li>
+						<li>PHP</li>
+					</ul>
+
+			</div>
+		</div>
+		<!-- TABLE -->
+		<div class="main">
+			<h2><a id="table" class="anchor"></a>Table:</h2>
+			<table>
+				<thead>
+				<tr>
+				  <th>Firstname</th>
+				  <th>Lastname</th>
+				  <th>Savings</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				  <td>Peter</td>
+				  <td>Griffin</td>
+				  <td>$100</td>
+				</tr>
+				<tr>
+				  <td>Lois</td>
+				  <td>Griffin</td>
+				  <td>$150</td>
+				</tr>
+				<tr>
+				  <td>Joe</td>
+				  <td>Swanson</td>
+				  <td rowspan="2">$550</td>
+				</tr>
+				<tr>
+				  <td>Cleveland</td>
+				  <td >Brown</td>
+				</tr>
+				<tr class="bggreen">
+				  <th colspan="2">Total</th>
+				  <th >$800</th>
+				</tr>
+			</tbody>
+			  </table>
+		</div>
+		<!-- FORM -->
+		<div class="main">
+			<form action="./receptor" method="get" target="_blank">
+				<h2><a id="form" class="anchor"></a>Form:</h2>
+				<fieldset>	
+					<div class="row">
+						<div class="col-25">
+						  <label for="firstname">Nom:</label>
+						</div>
+						<div class="col-75">
+						  <input type="text"  name="firstname" placeholder="El teu nom">
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-25">
+						  <label for="lastname">Cognoms</label>
+						</div>
+						<div class="col-75">
+						  <input type="text" name="lastname" placeholder="Cognom1 cognom2">
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-25">
+							<label for="phone">Telefon</label>
+						</div>
+						<div class="col-75">
+							<input type="tel" name="phone" placeholder="+34 612345678" pattern="^\+\d{2} [0-9]{9}$">
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-25">
+							<label for="cond">Age</label>
+						</div>
+						<div class="col-75">
+							<input type="number" value="3" min="0" max="80" />
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-25">
+							<label for="cond">Pasos al dia (0-10000)</label>
+						</div>
+						<div class="col-75">
+							<input type="range"list="tickmarks" min="10000" max="90000"/>
+							<datalist id="tickmarks">
+								<option value="100000"></option>
+								<option value="200000"></option>
+								<option value="300000"></option>
+								<option value="400000"></option>
+								<option value="500000"></option>
+								<option value="600000"></option>
+								<option value="700000"></option>
+								<option value="800000"></option>
+								<option value="900000"></option>
+							</datalist>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-25">
+						  <label for="country">C.Autonoma</label>
+						</div>
+						<div class="col-75">
+						  <select id="country" name="country">
+							<optgroup label="Peninsulars">				
+								<option value=""></option>
+								<option value="cas">Castella y Lleó</option>
+								<option value="cat" selected>Catalunya</option>
+								<option value="and">Andalucia</option>
+								<option value="casm">Castella-La Mancha</option>
+								<option value="arag">Aragon</option>
+								<option value="bal">Illes Balears</option>
+								<option value="can">Illes Canarias</option>
+								<option value="cant">Cantabria</option>
+								<option value="mad">Comunitat de Madrid</option>
+								<option value="val">Comunitat Valenciana</option>
+								<option value="nav">Comunintat Foral de Navarra</option>
+								<option value="ext">Extremadura</option>
+								<option value="gal">Galicia</option>
+								<option value="pas">Pais Vasc</option>
+								<option value="prin">Principat d´Asturies</option>
+								<option value="mur">Regió de Murcia</option>
+								<option value="rio">La Rioja</option>
+							</optgroup> 
+							<optgroup label="No Peninsulars">						
+									<option value="illesbaleras">Illes baleras</option>
+									<option value="canaries">Canaries</option>
+							</optgroup>
+							<optgroup label="ciutatsnopeninsulars">  ciutat Nn peninsulars</optgroup>						
+									
+							</optgroup>
+
+						  </select>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-25">
+						  <label for="subject">Missatge</label>
+						</div>
+						<div class="col-75">
+						  <textarea id="subject" name="subject" placeholder="Escriure alguna cosa.." style="height:200px"></textarea>
+						</div>
+					  </div>
+					  <div class="row">
+						<div>
+						<label class="container">One
+						  <input type="checkbox" checked="checked">
+						  <span class="checkmark"></span>
+						</div>
+						<div>
+						</label>
+						<label class="container">Two
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+						</div>
+					
+					</div>
+					  <div class="row">
+						<input type="submit" value="Enviar">
+					  </div>
+				</fieldset>
+
+			</form>
+		</div>
+		<!-- FOOTER -->
+		<footer id="footer">
+			<p><b>author</b>: Javier Iglesias Romero</p>
+			<p><a href="mailto:jiglesro7@mail.com">jiglesro7@mail.com</a></p>
+			<p>
+				<b>nom del curs</b>: CONFECCIÓ I PUBLICACIÓ DE PÀGINES WEB (IFCD0110)
+			</p>
+			<p><b>data</b>: 14/04/2022</p>
+		</footer>
+	</body>
+</html>
